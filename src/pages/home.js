@@ -7,26 +7,26 @@ import Footer from '../components/footer'
 function home() {
   return (
     <div>
-      {/* <Navbar /> */}
       <div className="home-content">
         <SideNav />
         <div className="main-section">
           <div className="hero-section">
-            <h1>Welcome to BreezeBuy</h1>
-            <p>Your one-stop shop for everything!</p>
-            <button className="shop-now-btn">Shop Now</button>
+            <h1>Welcome to BreezeBuy Admin Portal</h1>
+            <p>Efficiently manage products, inventory, vendors, and more.</p>
+            <button className="get-started-btn">Get Started</button>
           </div>
-          <div className="featured-section">
-            <h2>Featured Products</h2>
-            <div className="product-cards">
-              <div className="home-card">Product 1</div>
-              <div className="home-card">Product 2</div>
-              <div className="home-card">Product 3</div>
+          <div className="services-section">
+            <h2>Key Services</h2>
+            <div className="service-cards">
+              <div className="home-card">Inventory Management</div>
+              <div className="home-card">Product Management</div>
+              <div className="home-card">Order Management</div>
+              <div className="home-card">Vendor Management</div>
+              <div className="home-card">User Management</div>
             </div>
           </div>
         </div>
       </div>
-      {/* <Footer /> */}
     </div>
   )
 }
