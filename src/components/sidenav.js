@@ -16,8 +16,8 @@ function SideNav() {
       </button>
       <div className={`sidenav ${isOpen ? 'open' : 'closed'}`}>
       <br></br><br></br>
-        <Link to="/service1">
-          <i className="fas fa-box-open"></i> {isOpen && <span>Service 1</span>}
+        <Link to="/inventory">
+          <i className="fas fa-box-open"></i> {isOpen && <span>Inventory</span>}
         </Link>
         <Link to="/service2">
           <i className="fas fa-truck"></i> {isOpen && <span>Service 2</span>}
