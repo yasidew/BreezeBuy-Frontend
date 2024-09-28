@@ -44,6 +44,7 @@ const UpdateFeedback = () => {
             navigate("/customer-dashboard")
         } catch (err) {
             setError('Error updating the comment');
+            toast.error('Error updating the comment')
         }
     };
 

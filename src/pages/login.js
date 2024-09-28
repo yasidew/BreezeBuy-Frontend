@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import '../styles/login.css'
+import { toast } from 'react-toastify';
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -22,10 +23,13 @@ const Login = () => {
       const userRole = getUserRole(token); // Extract role from token
 
       if (userRole.includes('Admin')) {
+        toast.success(`${username} Login Successfully!!`)
         navigate('/admin');
       } else if (userRole.includes('Customer')) {
+        toast.success(`${username} Login Successfully!!`)
         navigate('/customer-dashboard');
-      } else {
+      } else if(userRole.includes('Vendor')){
+        toast.success(`${username} Login Successfully!!`)
         navigate('/vendor-dashboard');
       }
     } catch (error) {

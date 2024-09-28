@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import '../styles/manageinventory.css';
 import SideNav from "../components/sidenav";
+import { toast } from 'react-toastify';
 
 const UpdateVendor = () => {
     const [vendorDetails, setVendorDetails] = useState({
@@ -56,9 +57,10 @@ const UpdateVendor = () => {
                 }
             });
 
-            // Navigate back to vendor list or success page after update
+            toast.success("Vendor Details Updated Succeesfully")
             navigate('/vendor-dashboard');
         } catch (error) {
+            toast.error('Error updating vendor')
             console.error('Error updating vendor:', error);
         }
     };

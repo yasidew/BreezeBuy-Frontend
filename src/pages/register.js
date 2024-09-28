@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import '../styles/register.css'
+import { toast } from 'react-toastify';
 
 const Register = () => {
 
@@ -19,6 +20,7 @@ const Register = () => {
 
     // Check if the password and confirm password match
     if (password !== confirmPassword) {
+      toast.error('Passwords do not match')
       setError('Passwords do not match');
       return;
     }
@@ -36,11 +38,11 @@ const Register = () => {
       });
 
       if (response.status === 200) {
-        // On successful registration, redirect to login or another page
+        toast.success(`${username} Register Successfully!`);
         navigate('/login');
       }
     } catch (err) {
-      // Handle error responses
+      toast.error('Registration failed. Please try again.')
       setError('Registration failed. Please try again.');
     }
   };

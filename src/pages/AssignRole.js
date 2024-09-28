@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';  // Import useLocat
 import axios from 'axios';
 import SideNav from "../components/sidenav";
 import '../styles/manageinventory.css';
+import { toast } from 'react-toastify';
 
 const AssignRole = () => {
     const location = useLocation();
@@ -17,7 +18,7 @@ const AssignRole = () => {
                 username,
                 role,
             });
-            alert(`Role ${role} assigned to ${username}`);
+            toast.success(`Role ${role} assigned to ${username}`)
             navigate("/admin")
         } catch (error) {
             console.error('Failed to assign role', error);

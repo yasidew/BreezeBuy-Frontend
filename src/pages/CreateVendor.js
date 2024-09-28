@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import SideNav from "../components/sidenav";
 import '../styles/manageinventory.css';
+import { toast } from 'react-toastify';
 
 const CreateVendor = () => {
     const [username, setUsername] = useState('');
@@ -30,7 +31,7 @@ const CreateVendor = () => {
             });
 
             if (response.status === 200) {
-                // On successful registration, redirect to login or another page
+                toast.success('Create Vendor Successfully')
                 navigate('/admin');
             }
         } catch (err) {

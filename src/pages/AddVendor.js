@@ -3,6 +3,7 @@ import axios from 'axios';
 import '../styles/manageinventory.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import SideNav from "../components/sidenav";
+import { toast } from 'react-toastify';
 
 const AddVendor = () => {
     const [userDetails, setUserDetails] = useState(null); // To store user details from Auth/me
@@ -65,10 +66,12 @@ const AddVendor = () => {
                 }
             });
 
+            toast.success('Add Vendor successfully!');
             // Navigate or show success message after vendor is added
             navigate('/vendor-dashboard'); // Redirect to the vendor list page
         } catch (error) {
             console.error('Error adding vendor:', error);
+            toast.error("Error adding vedor")
         }
     };
 
