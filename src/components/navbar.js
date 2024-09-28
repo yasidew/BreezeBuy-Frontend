@@ -1,9 +1,18 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import '../styles/navbar.css'
-import logobanner from  '../images/logo-banner.png'
+import logobanner from '../images/logo-banner.png'
+import { useNavigate } from 'react-router-dom';
 
-function navbar() {
+function Navbar() {
+  const navigate = useNavigate();
+
+  const handleLogout = (event) => {
+    event.preventDefault(); // Prevent the default link behavior
+    localStorage.removeItem('token');
+    navigate('/login');  // Use navigate for redirection
+  };
+
   return (
     <nav className="navbar navbar-expand-lg navbar-blue bg-yellow">
       <div className="container-fluid">
@@ -20,6 +29,9 @@ function navbar() {
             <li className="nav-item">
               <Link className="nav-link" to="/register">Register</Link>
             </li>
+            <li className="nav-item">
+              <Link className="nav-link" onClick={handleLogout} to="#">Logout</Link>
+            </li>
           </ul>
         </div>
       </div>
@@ -27,4 +39,4 @@ function navbar() {
   )
 }
 
-export default navbar
+export default Navbar

@@ -30,41 +30,41 @@ function ManageInventory() {
     }
   }, [id]);
 
-  const handleSubmit= (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const inventoryData = {
-        productId,
-        productName,
-        quantityAvailable: parseInt(quantityAvailable),
-        reoderLevel: parseInt(reoderLevel),
+      productId,
+      productName,
+      quantityAvailable: parseInt(quantityAvailable),
+      reoderLevel: parseInt(reoderLevel),
     };
-    
-    if(id) {
-        axios.put(`http://localhost:5030/api/inventory/${id}`, inventoryData)
+
+    if (id) {
+      axios.put(`http://localhost:5030/api/inventory/${id}`, inventoryData)
         .then((res) => {
-            console.log("Item updated successfully", res.data);
-            navigate("/inventory");
+          console.log("Item updated successfully", res.data);
+          navigate("/inventory");
 
         })
         .catch((error) => {
-            console.log("error when updating data", error);
+          console.log("error when updating data", error);
         });
     }
-    else{
-        axios.post(`http://localhost:5030/api/inventory/`, inventoryData)
+    else {
+      axios.post(`http://localhost:5030/api/inventory/`, inventoryData)
         .then((res) => {
-            console.log("Item added successfully", res.data);
-            navigate("/inventory");
+          console.log("Item added successfully", res.data);
+          navigate("/inventory");
         })
         .catch((error) => {
-            console.log("error when adding item", error);
+          console.log("error when adding item", error);
         });
     }
   };
 
   return (
     <div className="container manage-inventory-page">
-    <SideNav />
+      <SideNav />
       <h1 className="page-title">{id ? "Edit Inventory Item" : "Add New Inventory Item"}</h1>
       <form onSubmit={handleSubmit} className="inventory-form">
         <div className="form-group">
@@ -84,13 +84,13 @@ function ManageInventory() {
           <input type="number" className="form-control" value={reoderLevel} onChange={(e) => setReorderLevel(e.target.value)} required />
         </div>
         <div className="button-group">
-      <button type="submit" className="btn btn-primary submit-btn">
-        {id ? "Update Item" : "Add Item"}
-      </button>
-      <button className="btn btn-secondary back-btn" onClick={() => navigate(-1)}>
-        Back
-      </button>
-    </div>
+          <button type="submit" className="btn btn-primary submit-btn">
+            {id ? "Update Item" : "Add Item"}
+          </button>
+          <button className="btn btn-secondary back-btn" onClick={() => navigate(-1)}>
+            Back
+          </button>
+        </div>
       </form>
     </div>
   )
