@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import "../styles/CustomerDashboard.css"
 import { FaStar, FaComment, FaAngleDown, FaAngleUp } from 'react-icons/fa';
+import SideNav from '../components/sidenav';
 
 const CustomerDashboard = () => {
     const [feedbacks, setFeedbacks] = useState([]);
@@ -61,6 +62,7 @@ const CustomerDashboard = () => {
 
     return (
         <div className="dashboard-container">
+            <SideNav/>
             <div className="feedback-section">
                 <h2 className="mb-4">Your Feedbacks</h2>
                 {feedbacks.map(feedback => (
