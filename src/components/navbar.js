@@ -14,7 +14,7 @@ function Navbar() {
     navigate('/login');
   };
 
-  // Check if the user is logged in
+  // Check if the user is 
   const isLoggedIn = localStorage.getItem('token') !== null;
 
 
