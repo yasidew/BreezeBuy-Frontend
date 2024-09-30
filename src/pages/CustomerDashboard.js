@@ -97,7 +97,7 @@ const CustomerDashboard = () => {
                     <div key={vendor.id} className="card vendor-card">
                         <div className="card-body">
                             <h5 className="card-title">Name: {vendor.name}
-                                {vendor.averageRating > BEST_VENDOR_THRESHOLD && (
+                                {(vendor.averageRating > BEST_VENDOR_THRESHOLD && vendor.comments.length === 5) && (
                                     <span className="badge badge-success ml-2">Best Vendor</span> // Display "Best Vendor" tag
                                 )}
                             </h5>
