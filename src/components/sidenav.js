@@ -65,7 +65,7 @@ function SideNav() {
         )}
 
         {/* Customer-specific links */}
-        {userRole === 'Customer,' && (
+        { userRole === 'Customer' && (
           <>
             <Link to="/customer-dashboard">
               <i className="fas fa-user"></i> {isOpen && <span>Customer Dashboard</span>}

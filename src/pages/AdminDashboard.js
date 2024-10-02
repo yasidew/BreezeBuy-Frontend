@@ -9,28 +9,39 @@ const AdminDashboard = () => {
     const [users, setUsers] = useState([]);
     const [error, setError] = useState('');
     const navigate = useNavigate();
+    const [currentPage, setCurrentPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(1);
+    const [pageSize] = useState(5);
 
     useEffect(() => {
-        const fetchUsers = async () => {
+        const fetchUsers = async (page) => {
             try {
-                const response = await axios.get('https://localhost:7260/Role/get-users');
-                setUsers(response.data);
+                const response = await axios.get('https://localhost:7260/Role/get-users', {
+                    params: {
+                        page: page,
+                        pageSize: pageSize
+                    }
+                });
+                setUsers(response.data.users);
+                setTotalPages(response.data.totalPages);
             } catch (err) {
                 setError('Failed to fetch users');
             }
         };
 
-        fetchUsers();
-    }, []);
+        fetchUsers(currentPage);
+    }, [currentPage, pageSize]);
 
     const handleCreateVendor = () => {
-        // Navigate to AssignRole and pass the username via state
         navigate('/create-vendor');
     };
 
     const handleAssignRole = (username) => {
-        // Navigate to AssignRole and pass the username via state
         navigate('/admin-assign', { state: { username } });
+    };
+
+    const handlePageChange = (page) => {
+        setCurrentPage(page);
     };
 
     const handleDeleteUser = async (username) => {
@@ -44,49 +55,76 @@ const AdminDashboard = () => {
     };
 
     return (
-        <div className="container mt-5 inventory-page">
+        <div className="container inventory-page">
             <SideNav />
             <div className="inventory-header">
                 <h1 className="inventory-title">User List</h1>
                 <button className="btn btn-primary add-new-btn" onClick={handleCreateVendor}>+ Add New User</button>
             </div>
             {error && <p style={{ color: 'red' }}>{error}</p>}
-            {/* <button onClick={handleCreateVendor}>Create Vendor</button> */}
             {users.length > 0 ? (
-                <div className="table-responsive">
-                    <table className="table table-hover table-bordered">
-                        <thead className="thead-dark">
-                            <tr>
-                                <th>Username</th>
-                                <th>Email</th>
-                                <th>Roles</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {users.map((user, index) => (
-                                <tr key={index}>
-                                    <td>{user.username}</td>
-                                    <td>{user.email}</td>
-                                    <td>{user.roles.join(', ')}</td>
-                                    <td>
-                                        {/* Only show the Assign Role button if the user is not an Admin */}
-                                        {!user.roles.includes('Admin') && (
-                                            <button onClick={() => handleAssignRole(user.username)} className="btn btn-outline-primary btn-sm mx-1">
-                                                Assign Role
-                                            </button>
-                                        )}
-                                        {/* Only show the delete button for customers and vendors */}
-                                        {(user.roles.includes('Customer') || user.roles.includes('Vendor')) && (
-                                            <button onClick={() => handleDeleteUser(user.username)} className="btn btn-outline-primary btn-sm mx-1">
-                                                Delete
-                                            </button>
-                                        )}
-                                    </td>
+                <div>
+                    <div style={{ marginTop: "5px" }}>
+                        <table className="table table-hover table-bordered">
+                            <thead className="thead-dark">
+                                <tr>
+                                    <th>Username</th>
+                                    <th>Email</th>
+                                    <th>Roles</th>
+                                    <th>Actions</th>
                                 </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                {users.map((user, index) => (
+                                    <tr key={index}>
+                                        <td>{user.username}</td>
+                                        <td>{user.email}</td>
+                                        <td>{user.roles.join(', ')}</td>
+                                        <td>
+                                            {/* Only show the Assign Role button if the user is not an Admin */}
+                                            {!user.roles.includes('Admin') && (
+                                                <button onClick={() => handleAssignRole(user.username)} className="btn btn-outline-primary btn-sm mx-1">
+                                                    Assign Role
+                                                </button>
+                                            )}
+                                            {/* Only show the delete button for customers and vendors */}
+                                            {(user.roles.includes('Customer') || user.roles.includes('Vendor')) && (
+                                                <button onClick={() => handleDeleteUser(user.username)} className="btn btn-outline-primary btn-sm mx-1">
+                                                    Delete
+                                                </button>
+                                            )}
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div className="pagination d-flex justify-content-center mt-3">
+                        <button
+                            onClick={() => handlePageChange(currentPage - 1)}
+                            disabled={currentPage === 1}
+                            className="btn btn-secondary mx-1"
+                        >
+                            Previous
+                        </button>
+                        {Array.from({ length: totalPages }, (_, index) => (
+                            <button
+                                key={index + 1}
+                                onClick={() => handlePageChange(index + 1)}
+                                className={`btn mx-1 ${index + 1 === currentPage ? 'btn-primary' : 'btn-secondary'}`}
+                            >
+                                {index + 1}
+                            </button>
+                        ))}
+                        <button
+                            onClick={() => handlePageChange(currentPage + 1)}
+                            disabled={currentPage === totalPages}
+                            className="btn btn-secondary mx-1"
+                        >
+                            Next
+                        </button>
+                    </div>
                 </div>
             ) : (
                 <p>No users found.</p>

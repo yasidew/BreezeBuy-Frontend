@@ -41,7 +41,7 @@ const AssignRole = () => {
                     >
                         <option value="">Select a role</option>  {/* Default option */}
                         <option value="Vendor">Vendor</option>
-                        <option value="Customer">Customer</option>
+                        <option value="CSR">Customer Service Representative(CSR)</option>
                     </select>
                 </div>
 

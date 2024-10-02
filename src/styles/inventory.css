@@ -51,86 +51,85 @@
    */
 
 
-   .inventory-page {
-    background-color: #f8f9fa;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .inventory-header {
-    position: absolute; 
+.inventory-page {
+  background-color: #f8f9fa;
+  /* padding: 20px; */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.inventory-header {
+  position: absolute;
   top: 150px;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: calc(100% - 400px);
-  }
-  
-  .inventory-title {
-    font-size: 32px;
-    /* color: #004080; */
-    font-weight: 700;
-    margin: 0;
-  }
-  
-  .add-new-btn {
+}
 
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-  }
-  
-  .add-new-btn:hover {
-    background-color: #003060;
-  }
-  
-  .table-responsive {
-    overflow-x: auto;
-    margin-top: -300px;
-    width: calc(100% - 150px);
-  }
-  
-  .table {
-    border-radius: 5px;
-    overflow: hidden;
-  }
-  
-  .table th,
-  .table td {
-    vertical-align: middle;
-  }
-  
-  .table th {
-    background-color: #004080;
-    color: white;
-  }
-  
-  .table-hover tbody tr:hover {
-    background-color: #f1f1f1;
-  }
-  
-  .btn-outline-primary {
-    border-color: #004080;
-    color: #004080;
-  }
-  
-  .btn-outline-primary:hover {
-    background-color: #004080;
-    color: white;
-  }
-  
-  .btn-outline-danger {
-    border-color: #dc3545;
-    color: #dc3545;
-  }
-  
-  .btn-outline-danger:hover {
-    background-color: #dc3545;
-    color: white;
-  }
-  
+.inventory-title {
+  font-size: 32px;
+  /* color: #004080; */
+  font-weight: 700;
+  margin: 0;
+}
+
+.add-new-btn {
+
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.add-new-btn:hover {
+  background-color: #003060;
+}
+
+.table-responsive {
+  overflow-x: auto;
+  margin-top: -300px;
+  width: calc(100% - 150px);
+}
+
+.table {
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.table th,
+.table td {
+  vertical-align: middle;
+}
+
+.table th {
+  background-color: #004080;
+  color: white;
+}
+
+.table-hover tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+.btn-outline-primary {
+  border-color: #004080;
+  color: #004080;
+}
+
+.btn-outline-primary:hover {
+  background-color: #004080;
+  color: white;
+}
+
+.btn-outline-danger {
+  border-color: #dc3545;
+  color: #dc3545;
+}
+
+.btn-outline-danger:hover {
+  background-color: #dc3545;
+  color: white;
+}
