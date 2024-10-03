@@ -19,6 +19,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AddFeedback from './pages/AddFeedback';
 import UpdateFeedback from './pages/UpdateFeedback';
+import ProductManagement from './pages/product';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
         <Route path= "/inventory" element={<Inventory/>}  />
         <Route path= "/inventory/add" element={<ManageInventory/>}  />
         <Route path= "/inventory/edit/:id" element={<ManageInventory/>}  />
+        <Route path="/product" element={<ProductManagement />} />
 
         <Route element={<PrivateRoute role="Admin" />}>
           <Route path="/admin" element={<AdminDashboard />} />
@@ -44,6 +46,8 @@ function App() {
           <Route path="/vendor-dashboard" element={<VendorDashboard />} />
           <Route path="/add-vendor-details" element={<AddVendor />} />
           <Route path="/update-vendor/:id" element={<UpdateVendor />} />
+
+          
         </Route>
 
         <Route element={<PrivateRoute role="Customer" />}>

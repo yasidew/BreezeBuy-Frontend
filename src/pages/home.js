@@ -3,6 +3,7 @@ import '../styles/home.css'
 import Navbar from '../components/navbar'
 import SideNav from '../components/sidenav'
 import Footer from '../components/footer'
+import { Link } from 'react-router-dom';
 
 function home() {
   return (
@@ -23,6 +24,9 @@ function home() {
               <div className="home-card">Order Management</div>
               <div className="home-card">Vendor Management</div>
               <div className="home-card">User Management</div>
+              <Link to="/product" className="home-card">
+                Product Management
+              </Link>
             </div>
           </div>
         </div>

@@ -11,7 +11,7 @@ const VendorDashboard = () => {
     const fetchUserDetails = async () => {
       try {
         const token = localStorage.getItem('token');
-        const userResponse = await fetch('https://localhost:7260/Auth/me', {
+        const userResponse = await fetch('http://localhost:5030/Auth/me', {
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -25,7 +25,7 @@ const VendorDashboard = () => {
         setUserDetails(userData);
 
         // Fetch vendor details for the logged-in user
-        const vendorResponse = await axios.get(`https://localhost:7260/api/Vendor/${userData.userId}`, {
+        const vendorResponse = await axios.get(`http://localhost:5030/api/Vendor/${userData.userId}`, {
           headers: {
             'Authorization': `Bearer ${token}`
           }
