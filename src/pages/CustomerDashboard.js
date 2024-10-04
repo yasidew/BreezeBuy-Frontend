@@ -9,7 +9,7 @@ const CustomerDashboard = () => {
     const [feedbacks, setFeedbacks] = useState([]);
     const [loading, setLoading] = useState(true);
     const [vendors, setVendors] = useState([]);
-    const [visibleComments, setVisibleComments] = useState({}); // Track visible comments for each vendor
+    const [visibleComments, setVisibleComments] = useState({}); 
     const [error, setError] = useState('');
     const navigate = useNavigate();
     const BEST_VENDOR_THRESHOLD = 4.5;
