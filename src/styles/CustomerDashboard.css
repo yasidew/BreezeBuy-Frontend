@@ -1,0 +1,296 @@
+/* General container and layout */
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Card Styles */
+.card {
+    border-radius: 12px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+    margin-bottom: 20px;
+}
+
+.card:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #4a4a4a;
+}
+
+.card-text {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 0.75rem;
+}
+
+/* Buttons */
+.btn {
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    transition: background-color 0.3s;
+}
+
+.btn-outline-primary {
+    color: #007bff;
+    border: 1px solid #007bff;
+}
+
+.btn-outline-primary:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-outline-secondary {
+    color: #6c757d;
+    border: 1px solid #6c757d;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #6c757d;
+    color: white;
+}
+
+/* Loading and Error */
+.text-center {
+    text-align: center;
+}
+
+.alert {
+    border-radius: 8px;
+    padding: 15px;
+    font-size: 1rem;
+}
+
+.alert-info {
+    background-color: #e7f3fe;
+    color: #31708f;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* Feedback & Vendor Cards */
+.feedback-card,
+.vendor-card {
+    padding: 20px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    transition: all 0.3s;
+}
+
+.feedback-card:hover,
+.vendor-card:hover {
+    transform: scale(1.02);
+    background-color: #f4f4f4;
+}
+
+/* Star Rating */
+.rating {
+    font-size: 1.2rem;
+    color: #f4c542;
+}
+
+.rating .fa-star {
+    margin-right: 5px;
+}
+
+/* Comment List */
+.comment-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.comment-list li {
+    padding: 10px 15px;
+    background-color: #f1f1f1;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.comment-list li .icon {
+    margin-right: 10px;
+    font-size: 1.2rem;
+    color: #007bff;
+}
+
+/* Typography */
+strong {
+    font-weight: bold;
+}
+
+.text-muted {
+    color: #6c757d;
+    font-style: italic;
+}
+
+/* Spacing */
+.mt-3 {
+    margin-top: 1rem;
+}
+
+.mb-4 {
+    margin-bottom: 1.5rem;
+}
+
+.py-5 {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+
+.dashboard-container {
+    display: flex;
+    justify-content: space-between;
+    height: 100vh; /* Make the container take the full height of the viewport */
+    padding: 20px;
+}
+
+.feedback-section, .vendor-section {
+    width: 48%; /* Divide the width between two sections */
+    max-height: 80vh; /* Set a fixed height for scrollable sections */
+    overflow-y: auto; /* Enable vertical scroll */
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Style feedback and vendor cards */
+.feedback-card, .vendor-card {
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+.feedback-card:hover, .vendor-card:hover {
+    transform: translateY(-5px);
+}
+
+.card-body {
+    padding: 15px;
+}
+
+/* Make the cards smaller and more compact */
+.card {
+    font-size: 0.9rem;
+}
+
+/* Comment list styling */
+.comment-list {
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 10px;
+}
+
+.comment-list li {
+    padding: 8px 10px;
+    background-color: #e9ecef;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+
+.icon {
+    margin-right: 8px;
+    color: #007bff;
+}
+
+/* Scrollbar styling */
+.feedback-section::-webkit-scrollbar, .vendor-section::-webkit-scrollbar {
+    width: 8px;
+}
+
+.feedback-section::-webkit-scrollbar-thumb, .vendor-section::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 10px;
+}
+
+.feedback-section::-webkit-scrollbar-track, .vendor-section::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
+
+.dashboard-container {
+    padding: 20px;
+}
+
+
+.feedback-section, .vendor-section {
+    margin-bottom: 20px;
+}
+
+.feedback-card, .vendor-card {
+    margin-bottom: 15px;
+}
+
+.comment-section {
+    font-size: 16px;
+}
+
+.star-section {
+    margin-top: 5px;
+}
+
+.comment-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.icon {
+    margin-right: 5px;
+}
+
+.comment-list {
+    list-style-type: none; /* Remove default list styling */
+    padding: 0; /* Remove default padding */
+}
+
+.comment-item {
+    display: flex; /* Use flexbox for alignment */
+    justify-content: space-between; /* Space between comment and stars */
+    align-items: center; /* Center items vertically */
+    margin-bottom: 10px; /* Add spacing between comments */
+}
+
+.star-section {
+    display: flex; /* Use flexbox for star alignment */
+}
+
+.star-icon {
+    color: gold; /* Gold color for stars */
+    margin-left: 2px; /* Add some space between stars */
+}
+
+.icon {
+    margin-right: 5px; /* Add some space between the comment icon and text */
+}
+
+.badge-success {
+    background-color: #28a745;
+    color: white;
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.2rem;
+    font-size: 0.9rem;
+}
