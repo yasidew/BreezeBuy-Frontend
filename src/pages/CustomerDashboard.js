@@ -19,7 +19,7 @@ const CustomerDashboard = () => {
             try {
                 const response = await axios.get('https://localhost:7260/api/Vendor/customer/feedbacks', {
                     headers: {
-                        Authorization: `Bearer ${localStorage.getItem('token')}`, // Assuming the token is stored in localStorage
+                        Authorization: `Bearer ${localStorage.getItem('token')}`, 
                     },
                 });
                 setFeedbacks(response.data);
