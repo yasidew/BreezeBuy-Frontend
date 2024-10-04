@@ -53,7 +53,6 @@ const VendorDashboard = () => {
           <h2 className="card-title">Dashboard</h2>
         </div>
         <div className="card-body">
-          {/* User Profile Section */}
           <h3>User Profile</h3>
           <p><strong>Username:</strong> {userDetails.username}</p>
           <p><strong>Email:</strong> {userDetails.email}</p>
