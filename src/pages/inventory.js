@@ -7,7 +7,6 @@ import SideNav from "../components/sidenav";
 function Inventory() {
   const [inventoryItems, setInventoryItems] = useState([]);
 
-  //fetch items
   useEffect(() => {
     axios
       .get("http://localhost:5030/api/inventory/")
