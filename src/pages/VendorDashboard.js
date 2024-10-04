@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const VendorDashboard = () => {
-  const [userDetails, setUserDetails] = useState(null);  // User details from Auth/me
-  const [vendorDetails, setVendorDetails] = useState(null);  // Vendor details for the logged-in user
+  const [userDetails, setUserDetails] = useState(null);  
+  const [vendorDetails, setVendorDetails] = useState(null); 
   const navigate = useNavigate();
 
   useEffect(() => {
