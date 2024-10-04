@@ -48,7 +48,6 @@ const VendorDashboard = () => {
 
   return (
     <div className="container mt-5">
-      {/* Combined User Profile and Vendor Details in One Card */}
       <div className="card">
         <div className="card-header">
           <h2 className="card-title">Dashboard</h2>
