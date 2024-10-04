@@ -29,7 +29,6 @@ const AddFeedback = () => {
                 }
 
                 const userData = await userResponse.json();
-                // console.log(userData)
                 setUserDetails(userData);
 
             } catch (error) {
