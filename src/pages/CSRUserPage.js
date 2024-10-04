@@ -26,7 +26,6 @@ const CSRUserPage = () => {
                     user.roles.includes("Customer")
                 );
 
-                // console.log(response)
                 setUsers(customers);
                 setTotalPages(response.data.totalPages);
             } catch (err) {
