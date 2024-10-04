@@ -19,7 +19,7 @@ const Login = () => {
       });
 
       const { token } = response.data;
-      localStorage.setItem('token', token); // Store token in localStoragess
+      localStorage.setItem('token', token); // Store token in localStorage
       const userRole = getUserRole(token); // Extract role from token
 
       if (userRole.includes('Admin')) {
