@@ -49,12 +49,11 @@ const CSRUserPage = () => {
             },
             {
                 headers: {
-                    Authorization: `Bearer ${token}`  // Include the token in the Authorization header
+                    Authorization: `Bearer ${token}`  
                 }
             }
         );
             toast.success(response.data.message);
-            // setUsers(users.map(user => user.id === customerId ? { ...user, status: 'active' } : user));
         } catch (err) {
             alert('Failed to activate user');
         }
