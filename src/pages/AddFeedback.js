@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 
 const AddFeedback = () => {
     const [commentText, setCommentText] = useState('');
-    const [rank, setRank] = useState(1); // Default rank value
+    const [rank, setRank] = useState(1); 
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const [userDetails, setUserDetails] = useState(null);
