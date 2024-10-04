@@ -34,12 +34,7 @@ function SideNav() {
       </button>
       <div className={`sidenav ${isOpen ? 'open' : 'closed'}`}>
         <br /><br />
-
-        {/* Common links for all roles */}
-        {/* <Link to="/inventory">
-          <i className="fas fa-box-open"></i> {isOpen && <span>Inventory</span>}
-        </Link> */}
-
+        
         {/* Admin-specific links */}
         {userRole === 'Admin' && (
           <>
