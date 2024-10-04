@@ -38,8 +38,8 @@ function SideNav() {
         {/* Admin-specific links */}
         {userRole === 'Admin' && (
           <>
-            <Link to="/create-vendor">
-              <i className="fas fa-user-plus"></i> {isOpen && <span>Create Vendor</span>}
+            <Link to="/admin">
+              <i className="fas fa-user-plus"></i> {isOpen && <span>User List</span>}
             </Link>
             <Link to="/admin-assign">
               <i className="fas fa-user-cog"></i> {isOpen && <span>Assign Roles</span>}

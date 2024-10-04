@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import SideNav from '../components/sidenav';
 
 const VendorDashboard = () => {
   const [userDetails, setUserDetails] = useState(null);  
@@ -48,6 +49,7 @@ const VendorDashboard = () => {
 
   return (
     <div className="container mt-5">
+      <SideNav />
       <div className="card">
         <div className="card-header">
           <h2 className="card-title">Dashboard</h2>

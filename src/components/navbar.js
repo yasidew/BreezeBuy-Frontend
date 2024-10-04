@@ -23,7 +23,7 @@ function Navbar() {
         }
 
         const userData = await userResponse.json();
-        console.log(userData)
+        console.log("fffff"+userData.username)
         setUser(userData);
       } catch (err) {
         setError('Error fetching user data.');
