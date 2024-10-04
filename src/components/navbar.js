@@ -1,17 +1,42 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '../styles/navbar.css'
 import logobanner from '../images/logo-banner.png';
-import { toast } from 'react-toastify';
+
 
 function Navbar() {
   const navigate = useNavigate();
+  const [user, setUser] = useState(null);
+  const [error, setError] = useState('');
 
-  const handleLogout = (event) => {
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        const userResponse = await fetch('https://localhost:7260/Auth/me', {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
+        if (!userResponse.ok) {
+          throw new Error('Failed to fetch user details');
+        }
+
+        const userData = await userResponse.json();
+        console.log(userData)
+        setUser(userData);
+      } catch (err) {
+        setError('Error fetching user data.');
+      }
+    };
+
+    fetchUser();
+  }, []);
+
+  const handleUserProfileClick = (event) => {
     event.preventDefault();
-    localStorage.removeItem('token');
-    toast.success('User Logout successfully!');
-    navigate('/login');
+    // Navigate to user profile page
+    navigate('/user-profile');
   };
 
   // Check if the user
@@ -23,7 +48,7 @@ function Navbar() {
       <div className="container-fluid">
         <div className="navbar-header">
           <Link className="navbar-brand" to="/">
-            <img src={logobanner} alt="BreezeBuy" className='navbar-logo' />
+            <img src={logobanner} alt="BreezeBuy" className="navbar-logo" />
           </Link>
         </div>
         <div className="collapse navbar-collapse" id="navbarNav">
@@ -38,9 +63,21 @@ function Navbar() {
                 </li>
               </>
             )}
-            {isLoggedIn && (
-              <li className="nav-item">
-                <Link className="nav-link" onClick={handleLogout} to="#">Logout</Link>
+            {isLoggedIn && user && (
+              <li className="nav-item d-flex align-items-center">
+                <span
+                  className="nav-link"
+                  onClick={handleUserProfileClick}  // Navigate to profile on click
+                  style={{ cursor: 'pointer' }}   // Make it look clickable
+                >
+                  <img
+                    src="https://static.vecteezy.com/system/resources/previews/005/129/844/non_2x/profile-user-icon-isolated-on-white-background-eps10-free-vector.jpg"
+                    alt="User"
+                    className="rounded-circle"
+                    style={{ width: '30px', height: '30px', objectFit: 'cover', marginRight: '8px' }}
+                  />
+                  {user.username}
+                </span>
               </li>
             )}
           </ul>

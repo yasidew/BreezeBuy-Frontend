@@ -31,6 +31,9 @@ const Login = () => {
       } else if(userRole.includes('Vendor')){
         toast.success(`${username} Login Successfully!!`)
         navigate('/vendor-dashboard');
+      }else if(userRole.includes('CSR')){
+        toast.success(`${username} Login Successfully!!`)
+        navigate('/csr-users-page');
       }
     } catch (error) {
       setError('Invalid login credentials');

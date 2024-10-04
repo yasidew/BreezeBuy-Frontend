@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/sidenav.css';
-import { jwtDecode } from 'jwt-decode'; 
+import { jwtDecode } from 'jwt-decode';
 
 function SideNav() {
   const [isOpen, setIsOpen] = useState(true);
@@ -34,7 +34,7 @@ function SideNav() {
       </button>
       <div className={`sidenav ${isOpen ? 'open' : 'closed'}`}>
         <br /><br />
-        
+
         {/* Common links for all roles */}
         {/* <Link to="/inventory">
           <i className="fas fa-box-open"></i> {isOpen && <span>Inventory</span>}
@@ -65,13 +65,21 @@ function SideNav() {
         )}
 
         {/* Customer-specific links */}
-        { userRole === 'Customer' && (
+        {userRole === 'Customer' && (
           <>
             <Link to="/customer-dashboard">
               <i className="fas fa-user"></i> {isOpen && <span>Customer Dashboard</span>}
             </Link>
             <Link to="/comment/:vendorId">
               <i className="fas fa-comment-alt"></i> {isOpen && <span>Give Feedback</span>}
+            </Link>
+          </>
+        )}
+
+        {userRole === 'CSR' && (
+          <>
+            <Link to="/csr-users-page">
+              <i className="fas fa-user"></i> {isOpen && <span>CSR Dashboard</span>}
             </Link>
           </>
         )}
