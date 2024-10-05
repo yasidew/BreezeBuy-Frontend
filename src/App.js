@@ -55,7 +55,7 @@ function App() {
 
         <Route element={<PrivateRoute role="Admin" />}>
           <Route path="/admin" element={<AdminDashboard />} />
-          <Route path="/admin-assign" element={<AssignRole />} />
+          <Route path="/admin-assign" element={<AssignRole />}/>
           <Route path="/create-vendor" element={<CreateVendor />} />
         </Route>
 

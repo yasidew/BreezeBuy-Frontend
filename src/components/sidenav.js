@@ -49,6 +49,9 @@ function SideNav() {
             <Link to="/admin-assign">
               <i className="fas fa-user-cog"></i> {isOpen && <span>Assign Roles</span>}
             </Link>
+            <Link to="/inventory">
+          <i className="fas fa-box-open"></i> {isOpen && <span>Inventory</span>}
+        </Link>
           </>
         )}
 
