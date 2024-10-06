@@ -17,7 +17,7 @@ const AddVendor = () => {
         const fetchUserDetails = async () => {
             try {
                 const token = localStorage.getItem('token');
-                const response = await fetch('https://localhost:7260/Auth/me', {
+                const response = await fetch('http://localhost:5030/Auth/me', {
                     headers: {
                         'Authorization': `Bearer ${token}`
                     }
