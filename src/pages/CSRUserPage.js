@@ -1,14 +1,12 @@
 import React, { useEffect, useState, } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';  // Import useNavigate
 import SideNav from "../components/sidenav";
 import '../styles/inventory.css';
 import { toast } from 'react-toastify';
 
-const AdminDashboard = () => {
+const CSRUserPage = () => {
     const [users, setUsers] = useState([]);
     const [error, setError] = useState('');
-    const navigate = useNavigate();
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const [pageSize] = useState(5);
@@ -19,10 +17,16 @@ const AdminDashboard = () => {
                 const response = await axios.get('https://localhost:7260/Role/get-users', {
                     params: {
                         page: page,
-                        pageSize: pageSize
+                        pageSize: 5
                     }
                 });
-                setUsers(response.data.users);
+
+                // Only keep users with "Customer" role 
+                const customers = response.data.users.filter(user =>
+                    user.roles.includes("Customer")
+                );
+
+                setUsers(customers);
                 setTotalPages(response.data.totalPages);
             } catch (err) {
                 setError('Failed to fetch users');
@@ -32,35 +36,31 @@ const AdminDashboard = () => {
         fetchUsers(currentPage);
     }, [currentPage, pageSize]);
 
-    const handleCreateVendor = () => {
-        navigate('/create-vendor');
-    };
-
-    const handleAssignRole = (username) => {
-        navigate('/admin-assign', { state: { username } });
-    };
-
     const handlePageChange = (page) => {
         setCurrentPage(page);
     };
 
-    const handleDeleteUser = async (username) => {
+    const handleActivateUser = async (customerId) => {
         try {
-            await axios.delete(`https://localhost:7260/Role/delete-customer/${username}`);
-            toast.success(`${username} User deleted successfully!`);
-            setUsers(users.filter(user => user.username !== username)); // Update the users list
+            const token = localStorage.getItem('token');
+            const response = await axios.put('https://localhost:7260/Auth/activateCustomerAccount',{
+                customerId: customerId
+            },
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`  
+                }
+            }
+        );
+            toast.success(response.data.message);
         } catch (err) {
-            alert('Failed to delete user');
+            alert('Failed to activate user');
         }
     };
 
     return (
         <div className="container inventory-page">
             <SideNav />
-            <div className="inventory-header">
-                <h1 className="inventory-title">User List</h1>
-                <button className="btn btn-primary add-new-btn" onClick={handleCreateVendor}>+ Add New User</button>
-            </div>
             {error && <p style={{ color: 'red' }}>{error}</p>}
             {users.length > 0 ? (
                 <div>
@@ -68,34 +68,35 @@ const AdminDashboard = () => {
                         <table className="table table-hover table-bordered">
                             <thead className="thead-dark">
                                 <tr>
+                                    <th>ID</th>
                                     <th>Username</th>
                                     <th>Email</th>
                                     <th>Roles</th>
+                                    <th>Status</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {users.map((user, index) => (
-                                    <tr key={index}>
-                                        <td>{user.username}</td>
-                                        <td>{user.email}</td>
-                                        <td>{user.roles.join(', ')}</td>
-                                        <td>
-                                            {/* Only show the Assign Role button if the user is not an Admin */}
-                                            {!user.roles.includes('Admin') && (
-                                                <button onClick={() => handleAssignRole(user.username)} className="btn btn-outline-primary btn-sm mx-1">
-                                                    Assign Role
-                                                </button>
-                                            )}
-                                            {/* Only show the delete button for customers and vendors */}
-                                            {(user.roles.includes('Customer') || user.roles.includes('Vendor')) && (
-                                                <button onClick={() => handleDeleteUser(user.username)} className="btn btn-outline-primary btn-sm mx-1">
-                                                    Delete
-                                                </button>
-                                            )}
-                                        </td>
-                                    </tr>
-                                ))}
+                                {users
+                                    .map((user, index) => (
+                                        <tr key={index}>
+                                            <td>{user.id}</td>
+                                            <td>{user.username}</td>
+                                            <td>{user.email}</td>
+                                            <td>{user.roles.join(', ')}</td>
+                                            <td>{user.status}</td>
+                                            <td>
+                                                {user.status === 'deactivated' && (
+                                                    <button
+                                                        onClick={() => handleActivateUser(user.id)}
+                                                        className="btn btn-outline-primary btn-sm mx-1"
+                                                    >
+                                                        Activate
+                                                    </button>
+                                                )}
+                                            </td>
+                                        </tr>
+                                    ))}
                             </tbody>
                         </table>
                     </div>
@@ -133,4 +134,4 @@ const AdminDashboard = () => {
     );
 };
 
-export default AdminDashboard;
+export default CSRUserPage;

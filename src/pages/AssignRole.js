@@ -7,9 +7,9 @@ import { toast } from 'react-toastify';
 
 const AssignRole = () => {
     const location = useLocation();
-    const navigate = useNavigate();  // Access the state passed via navigate
-    const { username } = location.state || {};  // Destructure to get the username
-    const [role, setRole] = useState('');  // Default value is empty
+    const navigate = useNavigate();  
+    const { username } = location.state || {};  
+    const [role, setRole] = useState('');  
 
     const handleRoleSubmit = async (e) => {
         e.preventDefault();
@@ -41,7 +41,7 @@ const AssignRole = () => {
                     >
                         <option value="">Select a role</option>  {/* Default option */}
                         <option value="Vendor">Vendor</option>
-                        <option value="Customer">Customer</option>
+                        <option value="CSR">Customer Service Representative(CSR)</option>
                     </select>
                 </div>
 

@@ -56,11 +56,13 @@ const AddVendor = () => {
                 name: userDetails.username,
                 userId: userDetails.userId,
                 product: vendorDetails.product,
-                description: vendorDetails.description
+                description: vendorDetails.description,
+                averageRating: 0,
+                comments:[]
             };
 
             // Send POST request to add vendor
-            await axios.post('https://localhost:7260/api/vendor', newVendor, {
+            await axios.post('https://localhost:7260/api/Vendor', newVendor, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }

@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import "../styles/sidenav.css";
-import { jwtDecode } from "jwt-decode";
+
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import '../styles/sidenav.css';
+import { jwtDecode } from 'jwt-decode';
 
 function SideNav() {
   const [isOpen, setIsOpen] = useState(true);
@@ -36,21 +37,14 @@ function SideNav() {
           <i className="fas fa-bars"></i>
         )}
       </button>
-      <div className={`sidenav ${isOpen ? "open" : "closed"}`}>
-        <br />
-        <br />
-
-        {/* Common links for all roles */}
-        {/* <Link to="/inventory">
-          <i className="fas fa-box-open"></i> {isOpen && <span>Inventory</span>}
-        </Link> */}
-
+      <div className={`sidenav ${isOpen ? 'open' : 'closed'}`}>
+        <br /><br />
+        
         {/* Admin-specific links */}
         {userRole === "Admin" && (
           <>
-            <Link to="/create-vendor">
-              <i className="fas fa-user-plus"></i>{" "}
-              {isOpen && <span>Create Vendor</span>}
+            <Link to="/admin">
+              <i className="fas fa-user-plus"></i> {isOpen && <span>User List</span>}
             </Link>
             <Link to="/admin-assign">
               <i className="fas fa-user-cog"></i>{" "}
@@ -91,6 +85,14 @@ function SideNav() {
             <Link to="/comment/:vendorId">
               <i className="fas fa-comment-alt"></i>{" "}
               {isOpen && <span>Give Feedback</span>}
+            </Link>
+          </>
+        )}
+
+        {userRole === 'CSR' && (
+          <>
+            <Link to="/csr-users-page">
+              <i className="fas fa-user"></i> {isOpen && <span>CSR Dashboard</span>}
             </Link>
           </>
         )}

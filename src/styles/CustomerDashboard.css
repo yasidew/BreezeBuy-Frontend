@@ -261,3 +261,36 @@ strong {
 .icon {
     margin-right: 5px;
 }
+
+.comment-list {
+    list-style-type: none; /* Remove default list styling */
+    padding: 0; /* Remove default padding */
+}
+
+.comment-item {
+    display: flex; /* Use flexbox for alignment */
+    justify-content: space-between; /* Space between comment and stars */
+    align-items: center; /* Center items vertically */
+    margin-bottom: 10px; /* Add spacing between comments */
+}
+
+.star-section {
+    display: flex; /* Use flexbox for star alignment */
+}
+
+.star-icon {
+    color: gold; /* Gold color for stars */
+    margin-left: 2px; /* Add some space between stars */
+}
+
+.icon {
+    margin-right: 5px; /* Add some space between the comment icon and text */
+}
+
+.badge-success {
+    background-color: #28a745;
+    color: white;
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.2rem;
+    font-size: 0.9rem;
+}

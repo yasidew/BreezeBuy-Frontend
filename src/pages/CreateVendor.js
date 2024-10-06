@@ -15,7 +15,7 @@ const CreateVendor = () => {
 
     const handleRegister = async (e) => {
         e.preventDefault();
-        setError(''); // Reset error message
+        setError(''); 
 
         // Check if the password and confirm password match
         if (password !== confirmPassword) {
