@@ -13,7 +13,7 @@ function Navbar() {
     const fetchUser = async () => {
       try {
         const token = localStorage.getItem('token');
-        const userResponse = await fetch('https://localhost:7260/Auth/me', {
+        const userResponse = await fetch('http://localhost:5030/Auth/me', {
           headers: {
             'Authorization': `Bearer ${token}`
           }
