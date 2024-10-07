@@ -32,7 +32,7 @@ function ProductManagement() {
 
   const handleDeleteClick = (productId) => {
     axios
-      .delete(`http://localhost:5030/api/product/${productId}`)
+      .delete(`http://localhost:5030/api/product/${productId}`) // Use backticks for string interpolation
       .then((res) => {
         setProducts(products.filter((product) => product.id !== productId));
       })
@@ -45,11 +45,8 @@ function ProductManagement() {
     <div className="container mt-5 product-management-page">
       <SideNav />
 
-
       {/* Product Table */}
       <div className="table-responsive mt-4">
-
-
         <div className="product-management-header">
           <h1 className="title">Product Management</h1>
           <Link to="/product/add">
@@ -76,7 +73,7 @@ function ProductManagement() {
                 <td>{product.quantity}</td>
                 <td>{product.price}</td>
                 <td>
-                <Link to={`/product/edit/${product.id}`}>
+                  <Link to={`/product/edit/${product.id}`}> {/* Use backticks for dynamic URL */}
                     <button className="btn btn-outline-primary btn-sm mx-1">
                       <i className="fas fa-edit"></i> Edit
                     </button>

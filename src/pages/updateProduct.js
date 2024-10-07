@@ -21,9 +21,9 @@ const UpdateProduct = () => {
         const fetchProductDetails = async () => {
             try {
                 const token = localStorage.getItem('token');
-                const response = await axios.get(`http://localhost:5030/api/product/${id}`, {
+                const response = await axios.get(`http://localhost:5030/api/product/${id}`, { // Use backticks for URL interpolation
                     headers: {
-                        'Authorization': `Bearer ${token}`
+                        'Authorization': `Bearer ${token}` // Use backticks for the Authorization header
                     }
                 });
 
@@ -54,9 +54,9 @@ const UpdateProduct = () => {
             const token = localStorage.getItem('token');
 
             // Send PUT request to update product
-            await axios.put(`http://localhost:5030/api/product/${id}`, productDetails, {
+            await axios.put(`http://localhost:5030/api/product/${id}`, productDetails, { // Use backticks for URL
                 headers: {
-                    'Authorization': `Bearer ${token}`
+                    'Authorization': `Bearer ${token}` // Use backticks for Authorization header
                 }
             });
 
@@ -77,7 +77,8 @@ const UpdateProduct = () => {
         <div className="container manage-inventory-page">
             <SideNav />
             <h2 className="page-title">Update Product</h2>
-            {/* <form onSubmit={handleSubmit} className="inventory-form">
+
+            <form onSubmit={handleSubmit} className="inventory-form">
                 <div className="form-group">
                     <label htmlFor="name">Product Name:</label>
                     <input
@@ -143,74 +144,7 @@ const UpdateProduct = () => {
                         Back
                     </button>
                 </div>
-            </form> */}
-            <form onSubmit={handleSubmit} className="inventory-form">
-  <div className="form-group">
-    <label htmlFor="name">Product Name:</label>
-    <input
-      type="text"
-      className="form-control"
-      id="name"
-      name="name"
-      value={productDetails.name}
-      onChange={handleChange}
-      required
-    />
-  </div>
-  <div className="form-group">
-    <label htmlFor="description">Description:</label>
-    <textarea
-      id="description"
-      className="form-control"
-      name="description"
-      value={productDetails.description}
-      onChange={handleChange}
-      required
-    />
-  </div>
-  <div className="form-group">
-    <label htmlFor="price">Price:</label>
-    <input
-      type="number"
-      className="form-control"
-      id="price"
-      name="price"
-      value={productDetails.price}
-      onChange={handleChange}
-      required
-    />
-  </div>
-  <div className="form-group">
-    <label htmlFor="quantity">Quantity:</label>
-    <input
-      type="number"
-      className="form-control"
-      id="quantity"
-      name="quantity"
-      value={productDetails.quantity}
-      onChange={handleChange}
-      required
-    />
-  </div>
-  <div className="form-group">
-    <label htmlFor="categoryId">Category ID:</label>
-    <input
-      type="text"
-      className="form-control"
-      id="categoryId"
-      name="categoryId"
-      value={productDetails.categoryId}
-      onChange={handleChange}
-      required
-    />
-  </div>
-  <div className="button-group">
-    <button type="submit" className="btn btn-secondary back-btn">Update Product</button>
-    <button className="btn btn-secondary back-btn" onClick={() => navigate(-1)}>
-      Back
-    </button>
-  </div>
-</form>
+            </form>
 
         </div>
     );

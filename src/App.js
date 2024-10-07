@@ -36,7 +36,8 @@ function App() {
         <Route path= "/inventory/add" element={<ManageInventory/>}  />
         <Route path= "/inventory/edit/:id" element={<ManageInventory/>}  />
         <Route path="/product" element={<ProductManagement />} />
-        <Route path="/updateproduct/edit/:id" element={<UpdateProduct />} />
+        <Route path="/product/edit/:id" element={<UpdateProduct />} />
+
 
         <Route element={<PrivateRoute role="Admin" />}>
           <Route path="/admin" element={<AdminDashboard />} />
