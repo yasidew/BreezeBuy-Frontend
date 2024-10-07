@@ -1,6 +1,6 @@
 import React, { useEffect, useState, } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';  // Import useNavigate
+import { useNavigate } from 'react-router-dom'; 
 import SideNav from "../components/sidenav";
 import '../styles/inventory.css';
 import { toast } from 'react-toastify';
@@ -88,7 +88,7 @@ const AdminDashboard = () => {
                                                 </button>
                                             )}
                                             {/* Only show the delete button for customers and vendors */}
-                                            {(user.roles.includes('Customer') || user.roles.includes('Vendor')) && (
+                                            {(user.roles.includes('Customer') || user.roles.includes('Vendor') || user.roles.includes('CSR')) && (
                                                 <button onClick={() => handleDeleteUser(user.username)} className="btn btn-outline-primary btn-sm mx-1">
                                                     Delete
                                                 </button>
