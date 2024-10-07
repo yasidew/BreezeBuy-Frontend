@@ -1,145 +1,3 @@
-
-
-
-// import React, { useEffect, useState } from "react";
-// import { Link } from "react-router-dom";
-// import axios from "axios";
-// import { toast, ToastContainer } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
-// import '../styles/inventory.css';
-// import SideNav from "../components/sidenav";
-
-// function Inventory() {
-//   const [inventoryItems, setInventoryItems] = useState([]);
-//   const [lowStockItems, setLowStockItems] = useState([]); // State for low stock items
-
-//   // Fetch all inventory items
-//   useEffect(() => {
-//     axios
-//       .get("http://localhost:5030/api/inventory/")
-//       .then((res) => {
-//         setInventoryItems(res.data);
-//       })
-//       .catch((err) => {
-//         console.log("Error retrieving data", err);
-//       });
-//   }, []);
-
-//   // Fetch low stock items
-//   useEffect(() => {
-//     axios
-//       .get("http://localhost:5030/api/inventory/low-stock")
-//       .then((res) => {
-//         setLowStockItems(res.data);
-//       })
-//       .catch((err) => {
-//         console.log("Error retrieving low stock items", err);
-//       });
-//   }, []);
-
-//   const handleDeleteClick = (productId) => {
-//     const confirmDelete = window.confirm("Do you want to delete this item?");
-//     if (confirmDelete) {
-//       axios
-//         .delete(`http://localhost:5030/api/inventory/${productId}`)
-//         .then((res) => {
-//           setInventoryItems(inventoryItems.filter((item) => item.id !== productId));
-//           setLowStockItems(lowStockItems.filter((item) => item.id !== productId));
-//           toast.success("Inventory deleted successfully!");
-//         })
-//         .catch((error) => {
-//           console.log("Error when deleting item", error);
-//           toast.error("Failed to delete item.");
-//         });
-//     }
-//   };
-
-//   return (
-//     <div className="container mt-5 inventory-page">
-//       <SideNav />
-//       <div className="inventory-header">
-//         <h1 className="inventory-title">Inventory Management</h1>
-//         <Link to="/inventory/add">
-//           <button className="btn btn-primary add-new-btn">+ Add New Item</button>
-//         </Link>
-//       </div>
-
-//       {/* All Inventory Items Table */}
-//       <div className="table-responsive">
-//         <table className="table table-hover table-bordered">
-//           <thead className="thead-dark">
-//             <tr>
-//               <th>Product ID</th>
-//               <th>Product Name</th>
-//               <th>Quantity Available</th>
-//               <th>Reorder Level</th>
-//               <th>Actions</th>
-//             </tr>
-//           </thead>
-//           <tbody>
-//             {inventoryItems.map((item) => (
-//               <tr key={item.id}>
-//                 <td>{item.productId}</td>
-//                 <td>{item.productName}</td>
-//                 <td>{item.quantityAvailable}</td>
-//                 <td>{item.reoderLevel}</td>
-//                 <td>
-//                   <Link to={`/inventory/edit/${item.id}`}>
-//                     <button className="btn btn-outline-primary btn-sm mx-1">
-//                       <i className="fas fa-edit"></i> Edit
-//                     </button>
-//                   </Link>
-//                   <button
-//                     className="btn btn-outline-danger btn-sm mx-1"
-//                     onClick={() => handleDeleteClick(item.id)}
-//                   >
-//                     <i className="fas fa-trash"></i> Delete
-//                   </button>
-//                 </td>
-//               </tr>
-//             ))}
-//           </tbody>
-//         </table>
-//       </div>
-
-//       {/* Low Stock Items Section */}
-//       <div className="low-stock-section mt-4">
-//         <h2>Low Stock Items</h2>
-//         {lowStockItems.length > 0 ? (
-//           <div className="table-responsive">
-//             <table className="table table-hover table-bordered">
-//               <thead className="thead-light">
-//                 <tr>
-//                   <th>Product ID</th>
-//                   <th>Product Name</th>
-//                   <th>Quantity Available</th>
-//                   <th>Reorder Level</th>
-//                 </tr>
-//               </thead>
-//               <tbody>
-//                 {lowStockItems.map((item) => (
-//                   <tr key={item.id}>
-//                     <td>{item.productId}</td>
-//                     <td>{item.productName}</td>
-//                     <td>{item.quantityAvailable}</td>
-//                     <td>{item.reoderLevel}</td>
-//                   </tr>
-//                 ))}
-//               </tbody>
-//             </table>
-//           </div>
-//         ) : (
-//           <p>No items are currently low in stock.</p>
-//         )}
-//       </div>
-
-//       <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} />
-//     </div>
-//   );
-// }
-
-// export default Inventory;
-
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -154,21 +12,44 @@ function Inventory() {
   const [inventoryItems, setInventoryItems] = useState([]);
   const [lowStockItems, setLowStockItems] = useState([]); // State for low stock items
   const [loading, setLoading] = useState(true); // State for loading
+  const [searchTerm, setSearchTerm] = useState(""); // New state for search term
 
   // Fetch all inventory items
   useEffect(() => {
-    axios
-      .get("http://localhost:5030/api/inventory/")
-      .then((res) => {
-        setInventoryItems(res.data);
-      })
-      .catch((err) => {
-        console.log("Error retrieving data", err);
-      })
-      .finally(() => {
-        setLoading(false); // Set loading to false after data is fetched
-      });
+    fetchInventoryItems();
   }, []);
+
+  // Function to fetch inventory items
+  const fetchInventoryItems = async () => {
+    setLoading(true);
+    try {
+      const res = await axios.get("http://localhost:5030/api/inventory/");
+      setInventoryItems(res.data);
+    } catch (err) {
+      console.error("Error retrieving data", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Function to handle search
+  const handleSearch = async () => {
+    if (!searchTerm.trim()) {
+      // If search term is empty, fetch all items
+      fetchInventoryItems();
+      return;
+    }
+
+    try {
+      const res = await axios.get(`http://localhost:5030/api/inventory/search`, {
+        params: { searchTerm },
+      });
+      setInventoryItems(res.data);
+    } catch (err) {
+      console.error("Error during search", err);
+      toast.error("Failed to perform search.");
+    }
+  };
 
   // Fetch low stock items
   useEffect(() => {
@@ -178,7 +59,7 @@ function Inventory() {
         setLowStockItems(res.data);
       })
       .catch((err) => {
-        console.log("Error retrieving low stock items", err);
+        console.error("Error retrieving low stock items", err);
       });
   }, []);
 
@@ -201,8 +82,8 @@ function Inventory() {
                       toast.success("Inventory deleted successfully!");
                     })
                     .catch((error) => {
-                      console.log("Error when deleting item", error);
-                      toast.error("Failed to delete item.");
+                      console.error("Error when deleting item", error);
+                      toast.error("Cannot Delete Due to Pending Orders.");
                     });
                   onClose();
                 }}
@@ -218,6 +99,7 @@ function Inventory() {
       },
     });
   };
+
   
 
   return (
@@ -228,6 +110,22 @@ function Inventory() {
         <Link to="/inventory/add">
           <button className="btn btn-primary add-new-btn">+ Add New Item</button>
         </Link>
+      </div>
+      {/* Search Bar */}
+      <div className="search-bar">
+        <input
+          type="text"
+          className="form-control"
+          placeholder="Search inventory..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+        <button className="btn btn-primary ml-2" onClick={handleSearch}>
+          Search
+        </button>
+        {/* <Link to="/inventory/add">
+          <button className="btn btn-primary add-new-btn">+ Add New Item</button>
+        </Link> */}
       </div>
 
       {loading ? (
