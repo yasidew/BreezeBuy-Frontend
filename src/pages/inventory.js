@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { confirmAlert } from 'react-confirm-alert'; // Import
-import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
-import '../styles/inventory.css';
+import { confirmAlert } from "react-confirm-alert"; // Import
+import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
+import "../styles/inventory.css";
 import SideNav from "../components/sidenav";
 
 function Inventory() {
@@ -41,9 +41,12 @@ function Inventory() {
     }
 
     try {
-      const res = await axios.get(`http://localhost:5030/api/inventory/search`, {
-        params: { searchTerm },
-      });
+      const res = await axios.get(
+        `http://localhost:5030/api/inventory/search`,
+        {
+          params: { searchTerm },
+        }
+      );
       setInventoryItems(res.data);
     } catch (err) {
       console.error("Error during search", err);
@@ -69,7 +72,9 @@ function Inventory() {
         return (
           <div className="custom-confirm-dialog">
             <h2 className="dialog-title">Delete Confirmation</h2>
-            <p className="dialog-message">Are you sure you want to delete this item?</p>
+            <p className="dialog-message">
+              Are you sure you want to delete this item?
+            </p>
             <div className="dialog-buttons">
               <button
                 className="btn-confirm"
@@ -77,8 +82,12 @@ function Inventory() {
                   axios
                     .delete(`http://localhost:5030/api/inventory/${productId}`)
                     .then((res) => {
-                      setInventoryItems(inventoryItems.filter((item) => item.id !== productId));
-                      setLowStockItems(lowStockItems.filter((item) => item.id !== productId));
+                      setInventoryItems(
+                        inventoryItems.filter((item) => item.id !== productId)
+                      );
+                      setLowStockItems(
+                        lowStockItems.filter((item) => item.id !== productId)
+                      );
                       toast.success("Inventory deleted successfully!");
                     })
                     .catch((error) => {
@@ -100,32 +109,31 @@ function Inventory() {
     });
   };
 
-  
-
   return (
     <div className="container mt-5 inventory-page">
       <SideNav />
       <div className="inventory-header">
         <h1 className="inventory-title">Inventory Management</h1>
-        <Link to="/inventory/add">
-          <button className="btn btn-primary add-new-btn">+ Add New Item</button>
-        </Link>
       </div>
+        <div className="inventory-header-2">
+          <Link to="/inventory/add">
+            <button className="btn btn-primary add-new-btn">
+              + Add New Item
+            </button>
+          </Link>
+        </div>
       {/* Search Bar */}
       <div className="search-bar">
         <input
           type="text"
           className="form-control"
-          placeholder="Search inventory..."
+          placeholder="Search inventory"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
         <button className="btn btn-primary ml-2" onClick={handleSearch}>
           Search
         </button>
-        {/* <Link to="/inventory/add">
-          <button className="btn btn-primary add-new-btn">+ Add New Item</button>
-        </Link> */}
       </div>
 
       {loading ? (
@@ -205,7 +213,11 @@ function Inventory() {
         </>
       )}
 
-      <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} />
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+      />
     </div>
   );
 }

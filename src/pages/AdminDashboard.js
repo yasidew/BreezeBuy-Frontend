@@ -46,7 +46,7 @@ const AdminDashboard = () => {
 
     const handleDeleteUser = async (username) => {
         try {
-            await axios.delete(`https://localhost:7260/Role/delete-customer/${username}`);
+            await axios.delete(`http://localhost:5030/Role/delete-customer/${username}`);
             toast.success(`${username} User deleted successfully!`);
             setUsers(users.filter(user => user.username !== username)); // Update the users list
         } catch (err) {
