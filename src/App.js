@@ -21,6 +21,7 @@ import AddFeedback from './pages/AddFeedback';
 import UpdateFeedback from './pages/UpdateFeedback';
 import UserProfile from './pages/UserProfile';
 import CSRUserPage from './pages/CSRUserPage';
+import InventoryDashboard from './pages/InventoryDashboard';
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
           <Route path="/inventory" element={<Inventory />} />
           <Route path="/inventory/add" element={<ManageInventory />} />
           <Route path="/inventory/edit/:id" element={<ManageInventory />} />
+          <Route path="/inventory-dashboard" element={<InventoryDashboard />} />
           <Route path="/user-profile" element={<UserProfile />} />
 
           <Route element={<PrivateRoute role="Admin" />}>

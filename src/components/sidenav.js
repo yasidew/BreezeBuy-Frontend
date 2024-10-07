@@ -50,10 +50,10 @@ function SideNav() {
               <i className="fas fa-user-cog"></i>{" "}
               {isOpen && <span>Assign Roles</span>}
             </Link>
-            <Link to="/inventory">
+            {/* <Link to="/inventory">
               <i className="fas fa-box-open"></i>{" "}
               {isOpen && <span>Inventory</span>}
-            </Link>
+            </Link> */}
           </>
         )}
 
@@ -71,6 +71,10 @@ function SideNav() {
             <Link to="/inventory">
               <i className="fas fa-box-open"></i>{" "}
               {isOpen && <span>Inventory</span>}
+            </Link>
+            <Link to="/inventory-dashboard">
+              <i className="fas fa-clipboard-list"></i>{" "}
+              {isOpen && <span>Inventory Dashboard</span>}
             </Link>
           </>
         )}
