@@ -47,47 +47,26 @@ const UpdateProduct = () => {
         });
     };
 
+    // Handle form submission to update product
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
             const token = localStorage.getItem('token');
-    
+
             // Send PUT request to update product
             await axios.put(`http://localhost:5030/api/product/${id}`, productDetails, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
             });
-    
+
             toast.success("Product Updated Successfully");
-            navigate('/product'); // Navigate to the product management page
+            navigate('/product'); // Adjust the navigation based on your app's structure
         } catch (error) {
             toast.error('Error updating product');
             console.error('Error updating product:', error);
         }
     };
-    
-
-    // // Handle form submission to update product
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault();
-    //     try {
-    //         const token = localStorage.getItem('token');
-
-    //         // Send PUT request to update product
-    //         await axios.put(`http://localhost:5030/api/product/${id}`, productDetails, {
-    //             headers: {
-    //                 'Authorization': `Bearer ${token}`
-    //             }
-    //         });
-
-    //         toast.success("Product Updated Successfully");
-    //         navigate('/product-dashboard'); // Adjust the navigation based on your app's structure
-    //     } catch (error) {
-    //         toast.error('Error updating product');
-    //         console.error('Error updating product:', error);
-    //     }
-    // };
 
     // Show loading message while fetching product details
     if (!productDetails) {
