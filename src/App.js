@@ -21,44 +21,49 @@ import AddFeedback from './pages/AddFeedback';
 import UpdateFeedback from './pages/UpdateFeedback';
 import ProductManagement from './pages/product';
 
+// Order Management
+import OrderManagement from './pages/OrderManagement';
+import OrderForm from './pages/OrderForm';
+
 function App() {
   return (
     <Router>
-    <Layout>
-      <ToastContainer />
-    
-      <Routes>
-        <Route path= "/" element={<Home/>}  />
-        <Route path= "/login" element={<Login/>}  />
-        <Route path= "/register" element={<Register/>}  />
-        <Route path= "/inventory" element={<Inventory/>}  />
-        <Route path= "/inventory/add" element={<ManageInventory/>}  />
-        <Route path= "/inventory/edit/:id" element={<ManageInventory/>}  />
-        <Route path="/product" element={<ProductManagement />} />
+      <Layout>
+        <ToastContainer />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/inventory" element={<Inventory />} />
+          <Route path="/inventory/add" element={<ManageInventory />} />
+          <Route path="/inventory/edit/:id" element={<ManageInventory />} />
+          <Route path="/product" element={<ProductManagement />} />
 
-        <Route element={<PrivateRoute role="Admin" />}>
-          <Route path="/admin" element={<AdminDashboard />} />
-          <Route path="/admin-assign" element={<AssignRole />} />
-          <Route path="/create-vendor" element={<CreateVendor />} />
-        </Route>
+          <Route element={<PrivateRoute role="Admin" />}>
+            <Route path="/admin" element={<AdminDashboard />} />
+            <Route path="/admin-assign" element={<AssignRole />} />
+            <Route path="/create-vendor" element={<CreateVendor />} />
+            <Route path="/order" element={<OrderManagement />} />
+            <Route path="/order/new" element={<OrderForm />} />
+            <Route path="/order/edit/:id" element={<OrderForm />} />
+          </Route>
 
-        <Route element={<PrivateRoute role="Vendor" />}>
-          <Route path="/vendor-dashboard" element={<VendorDashboard />} />
-          <Route path="/add-vendor-details" element={<AddVendor />} />
-          <Route path="/update-vendor/:id" element={<UpdateVendor />} />
+          <Route element={<PrivateRoute role="Vendor" />}>
+            <Route path="/vendor-dashboard" element={<VendorDashboard />} />
+            <Route path="/add-vendor-details" element={<AddVendor />} />
+            <Route path="/update-vendor/:id" element={<UpdateVendor />} />
+          </Route>
 
-          
-        </Route>
-
-        <Route element={<PrivateRoute role="Customer" />}>
-          <Route path="/customer-dashboard" element={<CustomerDashboard />} />
-          <Route path="/comment/:vendorId" element={<AddFeedback />} />
-          <Route path="/vendor/:vendorId/feedback/edit/:commentId" element={<UpdateFeedback />} />
-        </Route>
-      </Routes>
-   
-    </Layout>
-
+          <Route element={<PrivateRoute role="Customer" />}>
+            <Route path="/customer-dashboard" element={<CustomerDashboard />} />
+            <Route path="/comment/:vendorId" element={<AddFeedback />} />
+            <Route path="/vendor/:vendorId/feedback/edit/:commentId" element={<UpdateFeedback />} />
+            <Route path="/order" element={<OrderManagement />} />
+            <Route path="/order/new" element={<OrderForm />} />
+            <Route path="/order/edit/:id" element={<OrderForm />} />
+          </Route>
+        </Routes>
+      </Layout>
     </Router>
   );
 }

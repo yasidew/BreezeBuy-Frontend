@@ -11,7 +11,7 @@ function SideNav() {
     setIsOpen(!isOpen);
   };
 
-  console.log(userRole)
+  console.log(userRole);
 
   useEffect(() => {
     // Assuming the JWT token is stored in localStorage
@@ -34,11 +34,6 @@ function SideNav() {
       </button>
       <div className={`sidenav ${isOpen ? 'open' : 'closed'}`}>
         <br /><br />
-        
-        {/* Common links for all roles */}
-        {/* <Link to="/inventory">
-          <i className="fas fa-box-open"></i> {isOpen && <span>Inventory</span>}
-        </Link> */}
 
         {/* Admin-specific links */}
         {userRole === 'Admin' && (
@@ -51,6 +46,9 @@ function SideNav() {
             </Link>
             <Link to="/product">
               <i className="fas fa-shopping-cart"></i> {isOpen && <span>Products</span>}
+            </Link>
+            <Link to="/order">
+              <i className="fas fa-file-alt"></i> {isOpen && <span>Orders</span>}
             </Link>
           </>
         )}
@@ -68,13 +66,16 @@ function SideNav() {
         )}
 
         {/* Customer-specific links */}
-        { userRole === 'Customer' && (
+        {userRole === 'Customer' && (
           <>
             <Link to="/customer-dashboard">
               <i className="fas fa-user"></i> {isOpen && <span>Customer Dashboard</span>}
             </Link>
             <Link to="/comment/:vendorId">
               <i className="fas fa-comment-alt"></i> {isOpen && <span>Give Feedback</span>}
+            </Link>
+            <Link to="/order">
+              <i className="fas fa-file-alt"></i> {isOpen && <span>Orders</span>}
             </Link>
           </>
         )}
