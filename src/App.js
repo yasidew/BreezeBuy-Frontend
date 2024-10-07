@@ -21,6 +21,7 @@ import AddFeedback from './pages/AddFeedback';
 import UpdateFeedback from './pages/UpdateFeedback';
 import ProductManagement from './pages/product';
 import UpdateProduct from './pages/updateProduct';
+import AddProduct from './pages/AddProduct';
 
 function App() {
   return (
@@ -37,7 +38,7 @@ function App() {
         <Route path= "/inventory/edit/:id" element={<ManageInventory/>}  />
         <Route path="/product" element={<ProductManagement />} />
         <Route path="/product/edit/:id" element={<UpdateProduct />} />
-
+        <Route path="/product/add" element={<AddProduct />} />
 
         <Route element={<PrivateRoute role="Admin" />}>
           <Route path="/admin" element={<AdminDashboard />} />
