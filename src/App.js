@@ -21,6 +21,7 @@ import AddFeedback from './pages/AddFeedback';
 import UpdateFeedback from './pages/UpdateFeedback';
 import UserProfile from './pages/UserProfile';
 import CSRUserPage from './pages/CSRUserPage';
+import AdminVendorRankingPage from './pages/AdminVendorRankingPage';
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
             <Route path="/admin" element={<AdminDashboard />} />
             <Route path="/admin-assign" element={<AssignRole />} />
             <Route path="/create-vendor" element={<CreateVendor />} />
+            <Route path="/admin-vendor" element={<AdminVendorRankingPage />} />
           </Route>
 
           <Route element={<PrivateRoute role="Vendor" />}>

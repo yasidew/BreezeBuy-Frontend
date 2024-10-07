@@ -34,7 +34,7 @@ function SideNav() {
       </button>
       <div className={`sidenav ${isOpen ? 'open' : 'closed'}`}>
         <br /><br />
-        
+
         {/* Admin-specific links */}
         {userRole === 'Admin' && (
           <>
@@ -43,6 +43,9 @@ function SideNav() {
             </Link>
             <Link to="/admin-assign">
               <i className="fas fa-user-cog"></i> {isOpen && <span>Assign Roles</span>}
+            </Link>
+            <Link to="/admin-vendor">
+              <i className="fas fa-user-cog"></i> {isOpen && <span>Vendor Ranking</span>}
             </Link>
           </>
         )}

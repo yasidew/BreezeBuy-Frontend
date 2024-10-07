@@ -64,7 +64,8 @@ const CSRUserPage = () => {
             {error && <p style={{ color: 'red' }}>{error}</p>}
             {users.length > 0 ? (
                 <div>
-                    <div style={{ marginTop: "5px" }}>
+                    <h2 className="">User's List</h2>
+                    <div >
                         <table className="table table-hover table-bordered">
                             <thead className="thead-dark">
                                 <tr>
