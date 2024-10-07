@@ -39,7 +39,6 @@ function SideNav() {
       </button>
       <div className={`sidenav ${isOpen ? 'open' : 'closed'}`}>
         <br /><br />
-        
         {/* Admin-specific links */}
         {userRole === "Admin" && (
           <>
@@ -50,6 +49,14 @@ function SideNav() {
               <i className="fas fa-user-cog"></i>{" "}
               {isOpen && <span>Assign Roles</span>}
             </Link>
+
+            <Link to="/product">
+              <i className="fas fa-shopping-cart"></i> {isOpen && <span>Products</span>}
+            </Link>
+            <Link to="/order">
+              <i className="fas fa-file-alt"></i> {isOpen && <span>Orders</span>}
+            </Link>
+
             {/* <Link to="/inventory">
               <i className="fas fa-box-open"></i>{" "}
               {isOpen && <span>Inventory</span>}
@@ -80,6 +87,8 @@ function SideNav() {
         )}
 
         {/* Customer-specific links */}
+
+
         {userRole === "Customer" && (
           <>
             <Link to="/customer-dashboard">
@@ -97,6 +106,9 @@ function SideNav() {
           <>
             <Link to="/csr-users-page">
               <i className="fas fa-user"></i> {isOpen && <span>CSR Dashboard</span>}
+            </Link>
+            <Link to="/order">
+              <i className="fas fa-file-alt"></i> {isOpen && <span>Orders</span>}
             </Link>
           </>
         )}

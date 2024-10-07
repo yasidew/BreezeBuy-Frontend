@@ -1,6 +1,7 @@
+import React from 'react';
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import '../styles/navbar.css'
+import '../styles/navbar.css';
 import logobanner from '../images/logo-banner.png';
 
 
@@ -39,9 +40,7 @@ function Navbar() {
     navigate('/user-profile');
   };
 
-  // Check if the user
   const isLoggedIn = localStorage.getItem('token') !== null;
-
 
   return (
     <nav className="navbar navbar-expand-lg navbar-blue bg-yellow">
@@ -53,6 +52,25 @@ function Navbar() {
         </div>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
+            {isLoggedIn && (
+              <>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/create-vendor">Create Vendor</Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/admin-assign">Assign Roles</Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/product">Products</Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/order">Orders</Link> {/* New Orders Link */}
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" onClick={handleLogout} to="#">Logout</Link>
+                </li>
+              </>
+            )}
             {!isLoggedIn && (
               <>
                 <li className="nav-item">
@@ -63,6 +81,7 @@ function Navbar() {
                 </li>
               </>
             )}
+
             {isLoggedIn && user && (
               <li className="nav-item d-flex align-items-center">
                 <span
@@ -84,7 +103,7 @@ function Navbar() {
         </div>
       </div>
     </nav>
-  )
+  );
 }
 
-export default Navbar
+export default Navbar;

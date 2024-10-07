@@ -19,13 +19,52 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AddFeedback from './pages/AddFeedback';
 import UpdateFeedback from './pages/UpdateFeedback';
+import ProductManagement from './pages/product';
+import UpdateProduct from './pages/updateProduct';
 import UserProfile from './pages/UserProfile';
 import CSRUserPage from './pages/CSRUserPage';
 import InventoryDashboard from './pages/InventoryDashboard';
 
+
 function App() {
   return (
     <Router>
+    <Layout>
+      <ToastContainer />
+    
+      <Routes>
+        <Route path= "/" element={<Home/>}  />
+        <Route path= "/login" element={<Login/>}  />
+        <Route path= "/register" element={<Register/>}  />
+        <Route path= "/inventory" element={<Inventory/>}  />
+        <Route path= "/inventory/add" element={<ManageInventory/>}  />
+        <Route path= "/inventory/edit/:id" element={<ManageInventory/>}  />
+        <Route path="/product" element={<ProductManagement />} />
+        <Route path="/product/edit/:id" element={<UpdateProduct />} />
+
+
+        <Route element={<PrivateRoute role="Admin" />}>
+          <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/admin-assign" element={<AssignRole />} />
+          <Route path="/create-vendor" element={<CreateVendor />} />
+        </Route>
+
+        <Route element={<PrivateRoute role="Vendor" />}>
+          <Route path="/vendor-dashboard" element={<VendorDashboard />} />
+          <Route path="/add-vendor-details" element={<AddVendor />} />
+          <Route path="/update-vendor/:id" element={<UpdateVendor />} />
+
+          
+        </Route>
+
+        <Route element={<PrivateRoute role="Customer" />}>
+          <Route path="/customer-dashboard" element={<CustomerDashboard />} />
+          <Route path="/comment/:vendorId" element={<AddFeedback />} />
+          <Route path="/vendor/:vendorId/feedback/edit/:commentId" element={<UpdateFeedback />} />
+        </Route>
+      </Routes>
+   
+    </Layout>
       <Layout>
         <ToastContainer />
 
