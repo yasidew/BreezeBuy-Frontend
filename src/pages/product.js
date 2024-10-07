@@ -76,7 +76,7 @@ function ProductManagement() {
                 <td>{product.quantity}</td>
                 <td>{product.price}</td>
                 <td>
-                  <Link to={`/product/edit/${product.id}`}>
+                <Link to={`/product/edit/${product.id}`}>
                     <button className="btn btn-outline-primary btn-sm mx-1">
                       <i className="fas fa-edit"></i> Edit
                     </button>

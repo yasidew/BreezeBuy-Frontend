@@ -54,7 +54,7 @@ const CreateVendor = () => {
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
                         required
-                    />
+                    />...
                 </div>
                 <div className="form-group">
                     <label>Email</label>
