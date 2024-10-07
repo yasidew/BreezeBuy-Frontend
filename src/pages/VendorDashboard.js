@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import SideNav from '../components/sidenav';
 
 const VendorDashboard = () => {
-  const [userDetails, setUserDetails] = useState(null);  // User details from Auth/me
-  const [vendorDetails, setVendorDetails] = useState(null);  // Vendor details for the logged-in user
+  const [userDetails, setUserDetails] = useState(null);  
+  const [vendorDetails, setVendorDetails] = useState(null); 
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -48,13 +49,12 @@ const VendorDashboard = () => {
 
   return (
     <div className="container mt-5">
-      {/* Combined User Profile and Vendor Details in One Card */}
+      <SideNav />
       <div className="card">
         <div className="card-header">
           <h2 className="card-title">Dashboard</h2>
         </div>
         <div className="card-body">
-          {/* User Profile Section */}
           <h3>User Profile</h3>
           <p><strong>Username:</strong> {userDetails.username}</p>
           <p><strong>Email:</strong> {userDetails.email}</p>

@@ -1,0 +1,32 @@
+.dashboard-page {
+    display: flex;
+    flex-direction: column; /* Ensure the header and charts are stacked vertically */
+    align-items: center; /* Center the content horizontally */
+    height: auto;
+}
+
+.dashboard-header {
+    margin-bottom: auto;
+    display: flex;
+    justify-content: center; /* Center the header content horizontally */
+    align-items: center;
+    width: 100%; /* Ensure the header takes the full width */
+}
+
+.dashboard-title {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.charts-section {
+    display: flex;
+    flex-direction: row; /* Set to row to align charts side by side */
+    justify-content: center; /* Center the charts horizontally */
+    margin-top: 50px; /* Reduced margin for better spacing */
+    gap: 100px; /* Add space between the two charts */
+}
+
+.chart-container {
+    margin: 0;
+    width: 600px;
+}
