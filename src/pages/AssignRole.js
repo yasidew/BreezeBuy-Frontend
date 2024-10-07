@@ -14,7 +14,7 @@ const AssignRole = () => {
     const handleRoleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('https://localhost:7260/Role/assign-role', {
+            await axios.post('http://localhost:5030/Role/assign-role', {
                 username,
                 role,
             });
@@ -24,7 +24,7 @@ const AssignRole = () => {
             console.error('Failed to assign role', error);
             alert('Failed to assign role');
         }
-    };
+    };  
 
     return (
         <div className="container manage-inventory-page">
