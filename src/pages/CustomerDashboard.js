@@ -13,6 +13,7 @@ const CustomerDashboard = () => {
     const [error, setError] = useState('');
     const navigate = useNavigate();
     const BEST_VENDOR_THRESHOLD = 3.5;
+    const MINIMUM_COMMENTS = 7;
 
     useEffect(() => {
         const fetchCustomerFeedbacks = async () => {
@@ -93,7 +94,7 @@ const CustomerDashboard = () => {
                     <div key={vendor.id} className="card vendor-card">
                         <div className="card-body">
                             <h5 className="card-title">Name: {vendor.name}
-                                {(vendor.averageRating > BEST_VENDOR_THRESHOLD) && (
+                                {(vendor.averageRating > BEST_VENDOR_THRESHOLD && vendor.comments.length > MINIMUM_COMMENTS) && (
                                     <span className="badge badge-success ml-2">Best Vendor</span> // Display "Best Vendor" tag
                                 )}
                             </h5>
