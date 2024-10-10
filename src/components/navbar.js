@@ -51,25 +51,6 @@ function Navbar() {
         </div>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
-            {isLoggedIn && (
-              <>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/create-vendor">Create Vendor</Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/admin-assign">Assign Roles</Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/product">Products</Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/order">Orders</Link> {/* New Orders Link */}
-                </li>
-                {/* <li className="nav-item">
-                  <Link className="nav-link" onClick={handleLogout} to="#">Logout</Link>
-                </li> */}
-              </>
-            )}
             {!isLoggedIn && (
               <>
                 <li className="nav-item">
@@ -106,3 +87,21 @@ function Navbar() {
 }
 
 export default Navbar;
+
+// {isLoggedIn && (
+//   <>
+//     <li className="nav-item">
+//       <Link className="nav-link" to="/create-vendor">Create Vendor</Link>
+//     </li>
+//     <li className="nav-item">
+//       <Link className="nav-link" to="/admin-assign">Assign Roles</Link>
+//     </li>
+//     <li className="nav-item">
+//       <Link className="nav-link" to="/product">Products</Link>
+//     </li>
+//     <li className="nav-item">
+//       <Link className="nav-link" to="/order">Orders</Link> {/* New Orders Link */}
+//     </li>
+   
+//   </>
+// )}
