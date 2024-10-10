@@ -23,7 +23,7 @@ const AddVendor = () => {
         const fetchUserDetails = async () => {
             try {
                 const token = localStorage.getItem('token');
-                const response = await fetch('https://localhost:7260/Auth/me', {
+                const response = await fetch('/Auth/me', {
                     headers: {
                         'Authorization': `Bearer ${token}`
                     }
@@ -68,7 +68,7 @@ const AddVendor = () => {
             };
 
             // Send POST request to add vendor
-            await axios.post('https://localhost:7260/api/Vendor', newVendor, {
+            await axios.post('/api/Vendor', newVendor, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }

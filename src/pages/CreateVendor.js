@@ -30,7 +30,7 @@ const CreateVendor = () => {
         }
 
         try {
-            const response = await axios.post('https://localhost:7260/Auth/register', {
+            const response = await axios.post('/Auth/register', {
                 username,
                 email,
                 password
@@ -60,7 +60,7 @@ const CreateVendor = () => {
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
                         required
-                    />
+                    />...
                 </div>
                 <div className="form-group">
                     <label>Email</label>

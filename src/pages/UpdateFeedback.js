@@ -15,7 +15,7 @@ const UpdateFeedback = () => {
         // Fetch the existing comment to prepopulate the form
         const fetchComment = async () => {
             try {
-                const response = await axios.get(`https://localhost:7260/api/Vendor/${vendorId}/feedback/${commentId}`, {
+                const response = await axios.get(`/api/Vendor/${vendorId}/feedback/${commentId}`, {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem('token')}`, // Use token from localStorage
                     },
@@ -34,7 +34,7 @@ const UpdateFeedback = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.put(`https://localhost:7260/api/Vendor/${vendorId}/feedback/${commentId}`,
+            await axios.put(`/api/Vendor/${vendorId}/feedback/${commentId}`,
                 commentText, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`,

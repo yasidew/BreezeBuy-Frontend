@@ -22,6 +22,11 @@ import UpdateFeedback from './pages/UpdateFeedback';
 import UserProfile from './pages/UserProfile';
 import CSRUserPage from './pages/CSRUserPage';
 import AdminVendorRankingPage from './pages/AdminVendorRankingPage';
+import ProductManagement from './pages/product';
+import UpdateProduct from './pages/updateProduct';
+import CategoryList from './pages/category';
+import AddCategory from './pages/AddCategory';
+import AddProduct from './pages/AddProduct';
 
 function App() {
   return (
@@ -36,6 +41,12 @@ function App() {
           <Route path="/inventory" element={<Inventory />} />
           <Route path="/inventory/add" element={<ManageInventory />} />
           <Route path="/inventory/edit/:id" element={<ManageInventory />} />
+          <Route path="/product" element={<ProductManagement />} />
+          <Route path="/product/edit/:id" element={<UpdateProduct />} />
+          <Route path="/category" element={<CategoryList />} />
+          <Route path="/category/add" element={<AddCategory />} />
+          <Route path="/product/add" element={<AddProduct />} />
+          <Route path="/product/add" element={<AddProduct />} />
           <Route path="/user-profile" element={<UserProfile />} />
 
           <Route element={<PrivateRoute role="Admin" />}>

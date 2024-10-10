@@ -22,6 +22,7 @@ const AssignRole = () => {
         e.preventDefault();
         try {
             await axios.post('/Role/assign-role', {
+
                 username,
                 role,
             });
@@ -31,7 +32,7 @@ const AssignRole = () => {
             console.error('Failed to assign role', error);
             alert('Failed to assign role');
         }
-    };
+    };  
 
     return (
         <div className="container manage-inventory-page">
