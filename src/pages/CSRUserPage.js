@@ -1,7 +1,7 @@
 /*
  * CSRUserPage.js
  * Author: [Dayananda I.H.M.B.L. | IT21307058]
- * This is CSRUserPage. this page can activate deactivate user role
+ * This is CSRUserPage. this page can activate deactivate user rol
  */
 
 import React, { useEffect, useState, } from 'react';
