@@ -75,7 +75,7 @@ const AdminDashboard = () => {
                 </div>
                 {error && <p style={{ color: 'red' }}>{error}</p>}
                 {users.length > 0 ? (
-                    <div style={{padding: "10px", marginTop:"100px"}}>
+                    <div style={{padding: "10px", marginTop:"150px"}}>
                         <div>
                             <table className="table table-hover table-bordered">
                                 <thead className="thead-dark">

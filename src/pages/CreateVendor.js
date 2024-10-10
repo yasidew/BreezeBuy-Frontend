@@ -21,7 +21,7 @@ const CreateVendor = () => {
 
     const handleRegister = async (e) => {
         e.preventDefault();
-        setError(''); 
+        setError('');
 
         // Check if the password and confirm password match
         if (password !== confirmPassword) {
@@ -60,7 +60,7 @@ const CreateVendor = () => {
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
                         required
-                    />...
+                    />
                 </div>
                 <div className="form-group">
                     <label>Email</label>
