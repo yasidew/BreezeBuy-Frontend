@@ -71,7 +71,7 @@ const AdminDashboard = () => {
                 <SideNav />
                 <div className="inventory-header" style={{padding: "10px"}}>
                     <h1 className="inventory-title">BreezeBuy User List</h1>
-                    <button className="btn btn-primary add-new-btn" onClick={handleCreateVendor}>+ Add New User</button>
+                    <button className="btn btn-primary add-new-btn" onClick={handleCreateVendor} style={{marginRight: "300px"}}>+ Add New User</button>
                 </div>
                 {error && <p style={{ color: 'red' }}>{error}</p>}
                 {users.length > 0 ? (

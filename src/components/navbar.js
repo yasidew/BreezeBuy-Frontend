@@ -86,3 +86,21 @@ function Navbar() {
 }
 
 export default Navbar;
+
+// {isLoggedIn && (
+//   <>
+//     <li className="nav-item">
+//       <Link className="nav-link" to="/create-vendor">Create Vendor</Link>
+//     </li>
+//     <li className="nav-item">
+//       <Link className="nav-link" to="/admin-assign">Assign Roles</Link>
+//     </li>
+//     <li className="nav-item">
+//       <Link className="nav-link" to="/product">Products</Link>
+//     </li>
+//     <li className="nav-item">
+//       <Link className="nav-link" to="/order">Orders</Link> {/* New Orders Link */}
+//     </li>
+   
+//   </>
+// )}

@@ -14,7 +14,7 @@ import VendorDashboard from './pages/VendorDashboard';
 import AddVendor from './pages/AddVendor';
 import UpdateVendor from './pages/UpdateVendor';
 import CustomerDashboard from './pages/CustomerDashboard';
-
+import InventoryDashboard from './pages/InventoryDashboard';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AddFeedback from './pages/AddFeedback';
@@ -31,8 +31,8 @@ import AddProduct from './pages/AddProduct';
 function App() {
   return (
     <Router>
-      <Layout>
-        <ToastContainer />
+    <Layout>
+      <ToastContainer />
 
         <Routes>
           <Route path="/" element={<Home />} />
@@ -41,6 +41,7 @@ function App() {
           <Route path="/inventory" element={<Inventory />} />
           <Route path="/inventory/add" element={<ManageInventory />} />
           <Route path="/inventory/edit/:id" element={<ManageInventory />} />
+          <Route path="/inventory-dashboard" element={<InventoryDashboard />} />
           <Route path="/product" element={<ProductManagement />} />
           <Route path="/product/edit/:id" element={<UpdateProduct />} />
           <Route path="/category" element={<CategoryList />} />
@@ -48,6 +49,7 @@ function App() {
           <Route path="/product/add" element={<AddProduct />} />
           <Route path="/product/add" element={<AddProduct />} />
           <Route path="/user-profile" element={<UserProfile />} />
+          
 
           <Route element={<PrivateRoute role="Admin" />}>
             <Route path="/admin" element={<AdminDashboard />} />

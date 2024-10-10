@@ -68,11 +68,11 @@ const CSRUserPage = () => {
         <div className="container inventory-page">
             <SideNav />
             <div className="inventory-header">
-                <h1 className="inventory-title">BreezeBuy Customer List</h1>
+                <h1 className="inventory-title" style={{padding: "10px"}}>BreezeBuy Customer List</h1>
             </div>
             {error && <p style={{ color: 'red' }}>{error}</p>}
             {users.length > 0 ? (
-                <div>
+                <div style={{padding: "10px", marginTop:"100px"}}>
                     <div >
                         <table className="table table-hover table-bordered">
                             <thead className="thead-dark">
