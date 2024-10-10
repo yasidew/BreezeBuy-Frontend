@@ -1,4 +1,3 @@
-import React from 'react';
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '../styles/navbar.css';
@@ -66,9 +65,9 @@ function Navbar() {
                 <li className="nav-item">
                   <Link className="nav-link" to="/order">Orders</Link> {/* New Orders Link */}
                 </li>
-                <li className="nav-item">
+                {/* <li className="nav-item">
                   <Link className="nav-link" onClick={handleLogout} to="#">Logout</Link>
-                </li>
+                </li> */}
               </>
             )}
             {!isLoggedIn && (

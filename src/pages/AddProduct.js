@@ -65,7 +65,8 @@ const AddProduct = () => {
       <SideNav />
       <h2 className="page-title">Add New Product</h2>
       <form onSubmit={handleSubmit} className="inventory-form">
-        <div className="form-group">
+        <div className="form-group" style={{ marginTop: '70px' }}>
+         
           <label htmlFor="name">Product Name:</label>
           <input
             type="text"
