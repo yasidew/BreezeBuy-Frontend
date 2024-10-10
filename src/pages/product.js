@@ -109,7 +109,7 @@ function ProductManagement() {
   // Fetch all products and categories
   useEffect(() => {
     axios
-      .get("http://localhost:5030/api/product/")
+      .get("http://localhost:5030/api/product/active")
       .then((res) => {
         setProducts(res.data);
       })
