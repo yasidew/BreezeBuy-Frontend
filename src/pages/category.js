@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import SideNav from '../components/sidenav';
 import { toast } from 'react-toastify';
-import { Link } from 'react-router-dom';
 import '../styles/product.css';
 
 const CategoryList = () => {
@@ -10,8 +9,10 @@ const CategoryList = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [editCategoryId, setEditCategoryId] = useState(null); // To track the editing category
-  const [newCategoryName, setNewCategoryName] = useState(''); // Store the new name
+  const [newCategoryName, setNewCategoryName] = useState(''); // Store the new name for editing
+  const [addCategoryName, setAddCategoryName] = useState(''); // Store the new name for adding
   const [selectedCategoryId, setSelectedCategoryId] = useState(null);
+  const [showAddCategory, setShowAddCategory] = useState(false); // Track whether to show the add input
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -32,13 +33,7 @@ const CategoryList = () => {
     fetchCategories();
   }, []);
 
-  // Handle the edit button click
-  const handleEditClick = (categoryId, currentName) => {
-    setEditCategoryId(categoryId); // Set the category to be edited
-    setNewCategoryName(currentName); // Set the current name to the input field
-  };
-
-  // Handle the save button click
+  // Handle the save button click for editing
   const handleSaveClick = async (categoryId) => {
     try {
       const token = localStorage.getItem('token');
@@ -70,12 +65,44 @@ const CategoryList = () => {
     }
   };
 
+  // Handle adding a new category
+  const handleAddCategory = async () => {
+    if (addCategoryName.trim() === '') {
+      toast.error('Category name cannot be empty');
+      return;
+    }
+
+    try {
+      const token = localStorage.getItem('token');
+      const response = await axios.post(
+        'http://localhost:5030/api/category',  // Assuming this is your POST endpoint
+        { name: addCategoryName },  // Send the new category name
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json', // Set content type as JSON
+          },
+        }
+      );
+
+      toast.success('Category added successfully!');
+
+      // Update the category list with the new category
+      setCategories([...categories, response.data]);
+
+      // Clear the input field and hide the input
+      setAddCategoryName('');
+      setShowAddCategory(false);
+    } catch (err) {
+      console.log(err.response?.data); // Log error details
+      toast.error('Error adding category');
+    }
+  };
+
   // Handle delete button click
   const handleDeleteClick = async (categoryId) => {
     try {
       const token = localStorage.getItem('token');
-
-      // Make the delete request
       await axios.delete(`http://localhost:5030/api/category/${categoryId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -97,12 +124,17 @@ const CategoryList = () => {
     setEditCategoryId(null); // Exit edit mode without saving
   };
 
+  // Handle the edit button click
+  const handleEditClick = (categoryId, currentName) => {
+    setEditCategoryId(categoryId); // Set the category to be edited
+    setNewCategoryName(currentName); // Set the current name to the input field
+  };
+
   // Handle category activation/deactivation
   const handleCategoryStatus = async (categoryId, action) => {
     try {
       const token = localStorage.getItem('token');
 
-      // Corrected the template literal for URL
       const endpoint =
         action === 'activate'
           ? `http://localhost:5030/api/category/${categoryId}/activate`
@@ -110,11 +142,10 @@ const CategoryList = () => {
 
       await axios.put(endpoint, {}, {
         headers: {
-          Authorization: `Bearer ${token}`,  // Corrected to use backticks
+          Authorization: `Bearer ${token}`,
         },
       });
 
-      // Show success message
       toast.success(`Category ${action === 'activate' ? 'activated' : 'deactivated'} successfully!`);
 
       // Update the category list after activation/deactivation
@@ -126,13 +157,10 @@ const CategoryList = () => {
         )
       );
 
-      // Hide the dropdown after activation/deactivation
       setSelectedCategoryId(null);
-
     } catch (err) {
-      // Show error message
       toast.error(`Error ${action === 'activate' ? 'activating' : 'deactivating'} category`);
-      console.error(`Error ${action === 'activate' ? 'activating' : 'deactivating'} category`, err);
+      console.error(err);
     }
   };
 
@@ -153,10 +181,31 @@ const CategoryList = () => {
       <div className="table-responsive mt-4">
         <div className="product-management-header">
           <h1 className="title">Category Management</h1>
-          <Link to="/category/add">
-            <button className="btn btn-primary add-new-btn">+ Add New Category</button>
-          </Link>
         </div>
+
+        {/* Add New Category Button */}
+        <button className="btn btn-primary mb-3" onClick={() => setShowAddCategory(true)}>
+          Add New Category
+        </button>
+
+        {/* Input for Adding New Category (only shows when Add New Category button is clicked) */}
+        {showAddCategory && (
+          <div className="add-category-section mb-4">
+            <h3>Enter New Category</h3>
+            <div className="input-group">
+              <input
+                type="text"
+                value={addCategoryName}
+                onChange={(e) => setAddCategoryName(e.target.value)}
+                placeholder="Enter category name"
+                className="form-control"
+              />
+              <button className="btn btn-success ml-2" onClick={handleAddCategory}>
+                Submit
+              </button>
+            </div>
+          </div>
+        )}
 
         <h2>Categories</h2>
         <table className="table table-hover table-bordered">
