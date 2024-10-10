@@ -1,3 +1,9 @@
+/**
+ * Inventory Component
+ * This component displays the inventory items and allows searching, editing, and deleting items.
+ * Author: [Yasitha Dewmin | IT21440922]
+ */
+
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -66,6 +72,7 @@ function Inventory() {
       });
   }, []);
 
+  // Handle delete item
   const handleDeleteClick = (productId) => {
     confirmAlert({
       customUI: ({ onClose }) => {

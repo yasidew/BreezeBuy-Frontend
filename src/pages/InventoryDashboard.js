@@ -1,3 +1,9 @@
+/**
+ * InventoryDashboard Component
+ * This component displays the inventory dashboard with charts.
+ * Author: [Yasitha Dewmin | IT21440922]
+ */
+
 import React from 'react';
 import SideNav from "../components/sidenav";
 import '../styles/InventoryDashboard.css';

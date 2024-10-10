@@ -243,7 +243,7 @@
 .inventory-header-2{
   position: absolute;
     top: 230px;
-    display: flex;
+    /* display: flex; */
     justify-content: space-between;
     align-items: center;
     width: calc(100% - 510px);
