@@ -21,10 +21,9 @@ import AddFeedback from './pages/AddFeedback';
 import UpdateFeedback from './pages/UpdateFeedback';
 import ProductManagement from './pages/product';
 import UpdateProduct from './pages/updateProduct';
-import UserProfile from './pages/UserProfile';
-import CSRUserPage from './pages/CSRUserPage';
-import InventoryDashboard from './pages/InventoryDashboard';
-
+import CategoryList from './pages/category';
+import AddCategory from './pages/AddCategory';
+import AddProduct from './pages/AddProduct';
 
 function App() {
   return (
@@ -41,7 +40,9 @@ function App() {
         <Route path= "/inventory/edit/:id" element={<ManageInventory/>}  />
         <Route path="/product" element={<ProductManagement />} />
         <Route path="/product/edit/:id" element={<UpdateProduct />} />
-
+        <Route path="/category" element={<CategoryList />} />
+        <Route path="/category/add" element={<AddCategory />} />
+        <Route path="/product/add" element={<AddProduct />} />
 
         <Route element={<PrivateRoute role="Admin" />}>
           <Route path="/admin" element={<AdminDashboard />} />
@@ -52,9 +53,7 @@ function App() {
         <Route element={<PrivateRoute role="Vendor" />}>
           <Route path="/vendor-dashboard" element={<VendorDashboard />} />
           <Route path="/add-vendor-details" element={<AddVendor />} />
-          <Route path="/update-vendor/:id" element={<UpdateVendor />} />
-
-          
+          <Route path="/update-vendor/:id" element={<UpdateVendor />} />       
         </Route>
 
         <Route element={<PrivateRoute role="Customer" />}>
@@ -65,43 +64,6 @@ function App() {
       </Routes>
    
     </Layout>
-      <Layout>
-        <ToastContainer />
-
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/inventory" element={<Inventory />} />
-          <Route path="/inventory/add" element={<ManageInventory />} />
-          <Route path="/inventory/edit/:id" element={<ManageInventory />} />
-          <Route path="/inventory-dashboard" element={<InventoryDashboard />} />
-          <Route path="/user-profile" element={<UserProfile />} />
-
-          <Route element={<PrivateRoute role="Admin" />}>
-            <Route path="/admin" element={<AdminDashboard />} />
-            <Route path="/admin-assign" element={<AssignRole />} />
-            <Route path="/create-vendor" element={<CreateVendor />} />
-          </Route>
-
-          <Route element={<PrivateRoute role="Vendor" />}>
-            <Route path="/vendor-dashboard" element={<VendorDashboard />} />
-            <Route path="/add-vendor-details" element={<AddVendor />} />
-            <Route path="/update-vendor/:id" element={<UpdateVendor />} />
-          </Route>
-
-          <Route element={<PrivateRoute role="Customer" />}>
-            <Route path="/customer-dashboard" element={<CustomerDashboard />} />
-            <Route path="/comment/:vendorId" element={<AddFeedback />} />
-            <Route path="/vendor/:vendorId/feedback/edit/:commentId" element={<UpdateFeedback />} />
-          </Route>
-
-          <Route element={<PrivateRoute role="CSR" />}>
-            <Route path="/csr-users-page" element={<CSRUserPage />} />
-          </Route>
-        </Routes>
-
-      </Layout>
 
     </Router>
   );

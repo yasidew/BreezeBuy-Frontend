@@ -53,6 +53,12 @@ function SideNav() {
             <Link to="/product">
               <i className="fas fa-shopping-cart"></i> {isOpen && <span>Products</span>}
             </Link>
+
+            <Link to="/category">
+  <i className="fas fa-folder-open"></i> {isOpen && <span>Category</span>}
+</Link>
+
+
             <Link to="/order">
               <i className="fas fa-file-alt"></i> {isOpen && <span>Orders</span>}
             </Link>
