@@ -13,7 +13,7 @@ function Navbar() {
     const fetchUser = async () => {
       try {
         const token = localStorage.getItem('token');
-        const userResponse = await fetch('http://localhost:5030/Auth/me', {
+        const userResponse = await fetch('/Auth/me', {
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -23,7 +23,6 @@ function Navbar() {
         }
 
         const userData = await userResponse.json();
-        console.log("fffff"+userData.username)
         setUser(userData);
       } catch (err) {
         setError('Error fetching user data.');

@@ -1,3 +1,8 @@
+/*
+ * CSRUserPage.js
+ * Author: [Dayananda I.H.M.B.L. | IT21307058]
+ */
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -18,7 +23,7 @@ const UpdateVendor = () => {
         const fetchVendorDetails = async () => {
             try {
                 const token = localStorage.getItem('token');
-                const response = await axios.get(`https://localhost:7260/api/Vendor/v1/${id}`, {
+                const response = await axios.get(`/api/Vendor/v1/${id}`, {
                     headers: {
                         'Authorization': `Bearer ${token}`
                     }
@@ -51,7 +56,7 @@ const UpdateVendor = () => {
             const token = localStorage.getItem('token');
 
             // Send PUT request to update vendor
-            await axios.put(`https://localhost:7260/api/Vendor/${id}`, vendorDetails, {
+            await axios.put(`/api/Vendor/${id}`, vendorDetails, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }

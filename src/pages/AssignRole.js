@@ -1,3 +1,9 @@
+/*
+ * AssignRole.js
+ * Author: [Dayananda I.H.M.B.L. | IT21307058]
+ * This is Assign role to users
+ */
+
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';  // Import useLocation to access passed state
 import axios from 'axios';
@@ -11,10 +17,12 @@ const AssignRole = () => {
     const { username } = location.state || {};  
     const [role, setRole] = useState('');  
 
+    // function assign role
     const handleRoleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://localhost:5030/Role/assign-role', {
+            await axios.post('/Role/assign-role', {
+
                 username,
                 role,
             });

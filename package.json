@@ -1,5 +1,6 @@
 {
   "name": "breezebuy",
+  "proxy":"https://localhost:7260",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

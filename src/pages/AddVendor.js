@@ -1,3 +1,9 @@
+/*
+ * AddVendor.js
+ * Author: [Dayananda I.H.M.B.L. | IT21307058]
+ * This is Add vendor to system
+ */
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../styles/manageinventory.css';
@@ -17,7 +23,7 @@ const AddVendor = () => {
         const fetchUserDetails = async () => {
             try {
                 const token = localStorage.getItem('token');
-                const response = await fetch('http://localhost:5030/Auth/me', {
+                const response = await fetch('/Auth/me', {
                     headers: {
                         'Authorization': `Bearer ${token}`
                     }
@@ -62,7 +68,7 @@ const AddVendor = () => {
             };
 
             // Send POST request to add vendor
-            await axios.post('https://localhost:7260/api/Vendor', newVendor, {
+            await axios.post('/api/Vendor', newVendor, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }

@@ -49,14 +49,17 @@ function SideNav() {
               <i className="fas fa-user-cog"></i>{" "}
               {isOpen && <span>Assign Roles</span>}
             </Link>
+            <Link to="/admin-vendor">
+              <i className="fas fa-user-cog"></i> {isOpen && <span>Vendor Ranking</span>}
+            </Link>
 
             <Link to="/product">
               <i className="fas fa-shopping-cart"></i> {isOpen && <span>Products</span>}
             </Link>
 
             <Link to="/category">
-  <i className="fas fa-folder-open"></i> {isOpen && <span>Category</span>}
-</Link>
+              <i className="fas fa-folder-open"></i> {isOpen && <span>Category</span>}
+            </Link>
 
 
             <Link to="/order">

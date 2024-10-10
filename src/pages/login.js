@@ -1,3 +1,9 @@
+/*
+ * login.js
+ * Author: [Dayananda I.H.M.B.L. | IT21307058]
+ * This is Customer Login  
+ */
+
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -10,10 +16,11 @@ const Login = () => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
+  // login function
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5030/Auth/login', {
+      const response = await axios.post('/Auth/login', {
         username,
         password,
       });
