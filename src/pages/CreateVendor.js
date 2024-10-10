@@ -15,7 +15,7 @@ const CreateVendor = () => {
 
     const handleRegister = async (e) => {
         e.preventDefault();
-        setError(''); // Reset error message
+        setError(''); 
 
         // Check if the password and confirm password match
         if (password !== confirmPassword) {
@@ -24,7 +24,7 @@ const CreateVendor = () => {
         }
 
         try {
-            const response = await axios.post('https://localhost:7260/Auth/register', {
+            const response = await axios.post('http://localhost:5030/Auth/register', {
                 username,
                 email,
                 password

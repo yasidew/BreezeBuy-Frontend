@@ -21,6 +21,8 @@ import AddFeedback from './pages/AddFeedback';
 import UpdateFeedback from './pages/UpdateFeedback';
 import ProductManagement from './pages/product';
 import UpdateProduct from './pages/updateProduct';
+import CategoryList from './pages/category';
+import AddCategory from './pages/AddCategory';
 import AddProduct from './pages/AddProduct';
 
 function App() {
@@ -38,6 +40,8 @@ function App() {
         <Route path= "/inventory/edit/:id" element={<ManageInventory/>}  />
         <Route path="/product" element={<ProductManagement />} />
         <Route path="/product/edit/:id" element={<UpdateProduct />} />
+        <Route path="/category" element={<CategoryList />} />
+        <Route path="/category/add" element={<AddCategory />} />
         <Route path="/product/add" element={<AddProduct />} />
 
         <Route element={<PrivateRoute role="Admin" />}>
@@ -49,9 +53,7 @@ function App() {
         <Route element={<PrivateRoute role="Vendor" />}>
           <Route path="/vendor-dashboard" element={<VendorDashboard />} />
           <Route path="/add-vendor-details" element={<AddVendor />} />
-          <Route path="/update-vendor/:id" element={<UpdateVendor />} />
-
-          
+          <Route path="/update-vendor/:id" element={<UpdateVendor />} />       
         </Route>
 
         <Route element={<PrivateRoute role="Customer" />}>

@@ -9,7 +9,7 @@ const CustomerDashboard = () => {
     const [feedbacks, setFeedbacks] = useState([]);
     const [loading, setLoading] = useState(true);
     const [vendors, setVendors] = useState([]);
-    const [visibleComments, setVisibleComments] = useState({}); // Track visible comments for each vendor
+    const [visibleComments, setVisibleComments] = useState({}); 
     const [error, setError] = useState('');
     const navigate = useNavigate();
     const BEST_VENDOR_THRESHOLD = 4.5;
@@ -19,7 +19,7 @@ const CustomerDashboard = () => {
             try {
                 const response = await axios.get('https://localhost:7260/api/Vendor/customer/feedbacks', {
                     headers: {
-                        Authorization: `Bearer ${localStorage.getItem('token')}`, // Assuming the token is stored in localStorage
+                        Authorization: `Bearer ${localStorage.getItem('token')}`, 
                     },
                 });
                 setFeedbacks(response.data);
