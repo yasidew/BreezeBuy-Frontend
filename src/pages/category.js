@@ -42,31 +42,16 @@ const CategoryList = () => {
   const handleSaveClick = async (categoryId) => {
     try {
       const token = localStorage.getItem('token');
-
-      // Send the new category name as a plain string in the body
-      // await axios.put(
-      //   `http://localhost:5030/api/category/${categoryId}/name`,
-      //   //http://localhost:5030/api/category/67060428c63951bfadecd7cb/name
-      //   { name: newCategoryName },  // Send the updated name directly as an object
-      //   {
-      //     headers: {
-      //       Authorization: `Bearer ${token}`,
-      //       'Content-Type': 'application/json', // Set content type as JSON
-      //     },
-      //   }
-      // );
-
       await axios.put(
-  `http://localhost:5030/api/category/${categoryId}/name`,
-  newCategoryName,  // Send the updated name directly as a plain string
-  {
-    headers: {
-      Authorization: `Bearer ${token}`,
-      'Content-Type': 'application/json', // Set content type as JSON
-    },
-  }
-);
-
+        `http://localhost:5030/api/category/${categoryId}/name`,
+        newCategoryName,  // Send the updated name directly as a plain string
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json', // Set content type as JSON
+          },
+        }
+      );
 
       toast.success('Category name updated successfully!');
 
@@ -116,9 +101,9 @@ const CategoryList = () => {
   const handleCategoryStatus = async (categoryId, action) => {
     try {
       const token = localStorage.getItem('token');
-      
+
       // Corrected the template literal for URL
-      const endpoint = 
+      const endpoint =
         action === 'activate'
           ? `http://localhost:5030/api/category/${categoryId}/activate`
           : `http://localhost:5030/api/category/${categoryId}/deactivate`;
