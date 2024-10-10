@@ -66,11 +66,7 @@ const CustomerDashboard = () => {
     if (loading) {
         return <div className="text-center py-5">Loading...</div>;
     }
-
-    // if (error) {
-    //     return <div className="alert alert-danger">{error}</div>;
-    // }
-
+    
     return (
         <div className="dashboard-container">
             <SideNav />

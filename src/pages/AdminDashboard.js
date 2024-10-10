@@ -1,3 +1,10 @@
+/*
+ * AdminDashboard.js
+ * Author: [Dayananda I.H.M.B.L. | IT21307058]
+ * This is page all users and in this page delete all users  
+ */
+
+
 import React, { useEffect, useState, } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'; 
@@ -13,6 +20,7 @@ const AdminDashboard = () => {
     const [totalPages, setTotalPages] = useState(1);
     const [pageSize] = useState(5);
 
+    // fetch all users
     useEffect(() => {
         const fetchUsers = async (page) => {
             try {
@@ -44,6 +52,7 @@ const AdminDashboard = () => {
         setCurrentPage(page);
     };
 
+    // function handle delete user
     const handleDeleteUser = async (username) => {
         try {
             await axios.delete(`https://localhost:7260/Role/delete-customer/${username}`);
@@ -58,7 +67,7 @@ const AdminDashboard = () => {
         <div className="container inventory-page">
             <SideNav />
             <div className="inventory-header">
-                <h1 className="inventory-title">User List</h1>
+                <h1 className="inventory-title">BreezeBuy User List</h1>
                 <button className="btn btn-primary add-new-btn" onClick={handleCreateVendor}>+ Add New User</button>
             </div>
             {error && <p style={{ color: 'red' }}>{error}</p>}
@@ -68,10 +77,10 @@ const AdminDashboard = () => {
                         <table className="table table-hover table-bordered">
                             <thead className="thead-dark">
                                 <tr>
-                                    <th>Username</th>
-                                    <th>Email</th>
-                                    <th>Roles</th>
-                                    <th>Actions</th>
+                                    <th style={{ padding: '20px' }}>Username</th>
+                                    <th style={{ padding: '20px' }}>Email</th>
+                                    <th style={{ padding: '20px' }}>Roles</th>
+                                    <th style={{ padding: '20px' }}>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>

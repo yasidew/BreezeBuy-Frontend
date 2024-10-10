@@ -1,3 +1,9 @@
+/*
+ * CreateVendor.js
+ * Author: [Dayananda I.H.M.B.L. | IT21307058]
+ * This is Create Vendor to system
+ */
+
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';

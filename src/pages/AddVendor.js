@@ -1,3 +1,9 @@
+/*
+ * AddVendor.js
+ * Author: [Dayananda I.H.M.B.L. | IT21307058]
+ * This is Add vendor to system
+ */
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../styles/manageinventory.css';

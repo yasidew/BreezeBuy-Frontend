@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import '../styles/manageinventory.css';
 
 const UpdateFeedback = () => {
     const { vendorId, commentId } = useParams(); // Extract vendorId and commentId from URL params
@@ -56,7 +57,7 @@ const UpdateFeedback = () => {
         <div className="container manage-inventory-page">
             <h2 className="page-title">Update Comment</h2>
             {error && <div className="alert alert-danger">{error}</div>}
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="inventory-form">
                 <div className="form-group">
                     <label htmlFor="commentText">Comment</label>
                     <textarea
@@ -70,7 +71,7 @@ const UpdateFeedback = () => {
                 </div>
                 <div className="button-group">
                     <button type="submit" className="btn btn-primary submit-btn" disabled={loading}>
-                        {loading ? 'Submitting...' : 'Submit Feedback'}
+                        {loading ? 'Updating....' : 'Update Comment'}
                     </button>
                     <button
                         type="button"

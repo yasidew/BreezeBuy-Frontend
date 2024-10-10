@@ -1,3 +1,9 @@
+/*
+ * CSRUserPage.js
+ * Author: [Dayananda I.H.M.B.L. | IT21307058]
+ * This is CSRUserPage. this page can activate deactivate user role
+ */
+
 import React, { useEffect, useState, } from 'react';
 import axios from 'axios';
 import SideNav from "../components/sidenav";
@@ -9,7 +15,7 @@ const CSRUserPage = () => {
     const [error, setError] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
-    const [pageSize] = useState(5);
+    const [pageSize] = useState(10);
 
     useEffect(() => {
         const fetchUsers = async (page) => {
@@ -17,7 +23,7 @@ const CSRUserPage = () => {
                 const response = await axios.get('https://localhost:7260/Role/get-users', {
                     params: {
                         page: page,
-                        pageSize: 5
+                        pageSize: 10
                     }
                 });
 
@@ -43,15 +49,15 @@ const CSRUserPage = () => {
     const handleActivateUser = async (customerId) => {
         try {
             const token = localStorage.getItem('token');
-            const response = await axios.put('https://localhost:7260/Auth/activateCustomerAccount',{
+            const response = await axios.put('https://localhost:7260/Auth/activateCustomerAccount', {
                 customerId: customerId
             },
-            {
-                headers: {
-                    Authorization: `Bearer ${token}`  
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
                 }
-            }
-        );
+            );
             toast.success(response.data.message);
         } catch (err) {
             alert('Failed to activate user');
@@ -61,27 +67,29 @@ const CSRUserPage = () => {
     return (
         <div className="container inventory-page">
             <SideNav />
+            <div className="inventory-header">
+                <h1 className="inventory-title">BreezeBuy Customer List</h1>
+            </div>
             {error && <p style={{ color: 'red' }}>{error}</p>}
             {users.length > 0 ? (
                 <div>
-                    <h2 className="">User's List</h2>
                     <div >
                         <table className="table table-hover table-bordered">
                             <thead className="thead-dark">
                                 <tr>
-                                    <th>ID</th>
-                                    <th>Username</th>
-                                    <th>Email</th>
-                                    <th>Roles</th>
-                                    <th>Status</th>
-                                    <th>Actions</th>
+                                    {/* <th style={{ padding: '20px' }}>ID</th> */}
+                                    <th style={{ padding: '20px' }}>Username</th>
+                                    <th style={{ padding: '20px' }}>Email</th>
+                                    <th style={{ padding: '20px' }}>Roles</th>
+                                    <th style={{ padding: '20px' }}>Status</th>
+                                    <th style={{ padding: '20px' }}>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {users
                                     .map((user, index) => (
                                         <tr key={index}>
-                                            <td>{user.id}</td>
+                                            {/* <td>{user.id}</td> */}
                                             <td>{user.username}</td>
                                             <td>{user.email}</td>
                                             <td>{user.roles.join(', ')}</td>

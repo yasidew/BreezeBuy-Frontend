@@ -1,3 +1,10 @@
+/*
+ * register.js
+ * Author: [Dayananda I.H.M.B.L. | IT21307058]
+ * This is Customer Register  
+ */
+
+
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -14,6 +21,7 @@ const Register = () => {
   const navigate = useNavigate();
   const [role, setRole] = useState('Customer');
 
+  // register
   const handleRegister = async (e) => {
     e.preventDefault();
     setError(''); // Reset error message
