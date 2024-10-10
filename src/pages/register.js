@@ -34,13 +34,13 @@ const Register = () => {
     }
 
     try {
-      const response = await axios.post('https://localhost:7260/Auth/register', {
+      const response = await axios.post('/Auth/register', {
         username,
         email,
         password
       });
 
-      await axios.post('https://localhost:7260/Role/assign-role', {
+      await axios.post('/Role/assign-role', {
         username,
         role,
       });

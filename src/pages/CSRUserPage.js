@@ -20,7 +20,7 @@ const CSRUserPage = () => {
     useEffect(() => {
         const fetchUsers = async (page) => {
             try {
-                const response = await axios.get('https://localhost:7260/Role/get-users', {
+                const response = await axios.get('/Role/get-users', {
                     params: {
                         page: page,
                         pageSize: 10
@@ -49,7 +49,7 @@ const CSRUserPage = () => {
     const handleActivateUser = async (customerId) => {
         try {
             const token = localStorage.getItem('token');
-            const response = await axios.put('https://localhost:7260/Auth/activateCustomerAccount', {
+            const response = await axios.put('/Auth/activateCustomerAccount', {
                 customerId: customerId
             },
                 {

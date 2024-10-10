@@ -22,7 +22,7 @@ const UserProfile = () => {
         const fetchUser = async () => {
             try {
                 const token = localStorage.getItem('token');
-                const userResponse = await fetch('https://localhost:7260/Auth/me', {
+                const userResponse = await fetch('/Auth/me', {
                     headers: {
                         'Authorization': `Bearer ${token}`
                     }
@@ -47,7 +47,7 @@ const UserProfile = () => {
     const deactivateAccount = async () => {
         try {
             const token = localStorage.getItem('token');
-            const response = await axios.put('https://localhost:7260/Auth/deactivateAccount', {}, {
+            const response = await axios.put('/Auth/deactivateAccount', {}, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }

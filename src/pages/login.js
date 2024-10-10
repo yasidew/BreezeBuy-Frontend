@@ -20,7 +20,7 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('https://localhost:7260/Auth/login', {
+      const response = await axios.post('/Auth/login', {
         username,
         password,
       });

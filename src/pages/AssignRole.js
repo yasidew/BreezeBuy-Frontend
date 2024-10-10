@@ -21,7 +21,7 @@ const AssignRole = () => {
     const handleRoleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('https://localhost:7260/Role/assign-role', {
+            await axios.post('/Role/assign-role', {
                 username,
                 role,
             });

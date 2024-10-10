@@ -24,7 +24,7 @@ const AdminDashboard = () => {
     useEffect(() => {
         const fetchUsers = async (page) => {
             try {
-                const response = await axios.get('https://localhost:7260/Role/get-users', {
+                const response = await axios.get('/Role/get-users', {
                     params: {
                         page: page,
                         pageSize: pageSize
@@ -55,7 +55,7 @@ const AdminDashboard = () => {
     // function handle delete user
     const handleDeleteUser = async (username) => {
         try {
-            await axios.delete(`https://localhost:7260/Role/delete-customer/${username}`);
+            await axios.delete(`/Role/delete-customer/${username}`);
             toast.success(`${username} User deleted successfully!`);
             setUsers(users.filter(user => user.username !== username)); // Update the users list
         } catch (err) {
