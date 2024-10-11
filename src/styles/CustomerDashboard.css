@@ -294,3 +294,21 @@ strong {
     border-radius: 0.2rem;
     font-size: 0.9rem;
 }
+
+.dashboard-container {
+    display: flex;
+}
+
+.main-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.feedback-section, .vendor-section {
+    width: 48%; /* Adjust width for both sections */
+}
+
+.card {
+    margin-bottom: 20px;
+}
