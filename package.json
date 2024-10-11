@@ -1,6 +1,6 @@
 {
   "name": "breezebuy",
-  "proxy":"https://pasindu99-001-site1.etempurl.com",
+  "proxy":"https://localhost:7260",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
