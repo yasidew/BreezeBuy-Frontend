@@ -10,11 +10,11 @@
 }
 
 .navbar-brand:hover {
-  color: #0056b3; /* Darker blue on hover */
+  color: #0056b3; 
 }
 
 .navbar-nav .nav-link {
-  color: #007bff; /* Blue links */
+  color: #007bff; 
   font-weight: 500;
   margin-right: 15px;
 }
