@@ -29,7 +29,7 @@ function Inventory() {
   const fetchInventoryItems = async () => {
     setLoading(true);
     try {
-      const res = await axios.get("http://localhost:5030/api/inventory/");
+      const res = await axios.get("/api/inventory");
       setInventoryItems(res.data);
     } catch (err) {
       console.error("Error retrieving data", err);
@@ -48,7 +48,7 @@ function Inventory() {
 
     try {
       const res = await axios.get(
-        `http://localhost:5030/api/inventory/search`,
+        `https://pasindu99-001-site1.etempurl.com/api/inventory/search`,
         {
           params: { searchTerm },
         }
@@ -63,7 +63,7 @@ function Inventory() {
   // Fetch low stock items
   useEffect(() => {
     axios
-      .get("http://localhost:5030/api/inventory/low-stock")
+      .get("https://pasindu99-001-site1.etempurl.com/api/inventory/low-stock")
       .then((res) => {
         setLowStockItems(res.data);
       })
@@ -87,7 +87,7 @@ function Inventory() {
                 className="btn-confirm"
                 onClick={() => {
                   axios
-                    .delete(`http://localhost:5030/api/inventory/${productId}`)
+                    .delete(`https://pasindu99-001-site1.etempurl.com/api/inventory/${productId}`)
                     .then((res) => {
                       setInventoryItems(
                         inventoryItems.filter((item) => item.id !== productId)
