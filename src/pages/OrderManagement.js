@@ -211,9 +211,16 @@ function OrderManagement() {
                     <td>{order.totalPayment}</td>
                     <td>
                       {/* Checkbox for changing status to delivered */}
-                      <input
+                      {/* <input
                         type="checkbox"
                         disabled={order.status !== "purchased"}
+                        onChange={() => handleDeliveryClick(order.id)}
+                      /> */}
+
+<input
+                        type="checkbox"
+                        checked={order.status === "delivered"} // Keeps checkbox checked if delivered
+                        disabled={order.status === "delivered"} // Disable checkbox if already delivered
                         onChange={() => handleDeliveryClick(order.id)}
                       />
                     </td>
