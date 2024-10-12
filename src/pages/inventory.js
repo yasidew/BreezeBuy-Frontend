@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { confirmAlert } from "react-confirm-alert"; // Import
+import { confirmAlert } from "react-confirm-alert"; 
 import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
 import "../styles/inventory.css";
 import SideNav from "../components/sidenav";
