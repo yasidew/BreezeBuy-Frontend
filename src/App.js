@@ -18,7 +18,7 @@ import CustomerDashboard from './pages/CustomerDashboard';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AddFeedback from './pages/AddFeedback';
-import UpdateFeedback from './pages/UpdateFeedback';
+import UpdateFeedback from './pages/UpdateFeedback'; 
 import UserProfile from './pages/UserProfile';
 import CSRUserPage from './pages/CSRUserPage';
 import InventoryDashboard from './pages/InventoryDashboard';
