@@ -48,7 +48,7 @@ function ManageInventory() {
   }, [id]);
 
    // Handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = (e) => { // Add e as parameter
     e.preventDefault();
     const inventoryData = {
       itemId,
@@ -73,7 +73,7 @@ function ManageInventory() {
           pauseOnHover: true,
           draggable: true,
         });
-        setTimeout(() => {
+        setTimeout(() => { // Delay navigation by 1 second to allow toast to display
           navigate("/inventory");
         }, 2000); // Delay navigation by 1 second to allow toast to display
       })
