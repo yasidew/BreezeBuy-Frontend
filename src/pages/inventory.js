@@ -42,7 +42,7 @@ function Inventory() {
   const handleSearch = async () => {
     if (!searchTerm.trim()) {
       // If search term is empty, fetch all items
-      fetchInventoryItems();
+      fetchInventoryItems(); 
       return;
     }
 
