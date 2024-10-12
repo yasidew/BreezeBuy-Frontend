@@ -28,13 +28,13 @@ function ManageInventory() {
    // Fetch items and item details if editing
   useEffect(() => {
     axios
-      .get("http://localhost:5030/api/inventory/items")
+      .get("https://pasindu99-001-site1.etempurl.com/api/inventory/items")
       .then((res) => setItems(res.data))
       .catch((error) => console.log("Error fetching items", error));
 
     if (id) {
       axios
-        .get(`http://localhost:5030/api/inventory/${id}`)
+        .get(`https://pasindu99-001-site1.etempurl.com/api/inventory/${id}`)
         .then((res) => {
           const item = res.data;
           setItemId(item.details.itemId);
@@ -59,8 +59,8 @@ function ManageInventory() {
     };
 
     const request = id
-      ? axios.put(`http://localhost:5030/api/inventory/${id}`, inventoryData)
-      : axios.post("http://localhost:5030/api/inventory/", inventoryData);
+      ? axios.put(`https://pasindu99-001-site1.etempurl.com/api/inventory/${id}`, inventoryData)
+      : axios.post("https://pasindu99-001-site1.etempurl.com/api/inventory/", inventoryData);
 
     request
       .then((res) => {
@@ -170,3 +170,6 @@ function ManageInventory() {
 }
 
 export default ManageInventory;
+
+
+// http://localhost:5030/api/inventory/${id}
