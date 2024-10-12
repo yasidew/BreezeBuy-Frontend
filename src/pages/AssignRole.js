@@ -1,8 +1,14 @@
+/*
+ * AssignRole.js
+ * Author: [Dayananda I.H.M.B.L. | IT21307058]
+ * This is Assign role to users
+ */
+
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';  // Import useLocation to access passed state
 import axios from 'axios';
 import SideNav from "../components/sidenav";
-import '../styles/manageinventory.css';
+// import '../styles/manageinventory.css';
 import { toast } from 'react-toastify';
 
 const AssignRole = () => {
@@ -11,10 +17,11 @@ const AssignRole = () => {
     const { username } = location.state || {};  
     const [role, setRole] = useState('');  
 
+    // function assign role
     const handleRoleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://localhost:5030/Role/assign-role', {
+            await axios.post('/Role/assign-role', {
                 username,
                 role,
             });
@@ -29,7 +36,7 @@ const AssignRole = () => {
     return (
         <div className="container manage-inventory-page">
             <SideNav />
-            <h2 className="page-title">Assign Role to {username}</h2>
+            <h2 className="page-title" style={{marginTop:"100px"}}>Assign Role to {username}</h2>
             <form onSubmit={handleRoleSubmit} className="inventory-form">
                 <div className="form-group">
                     <label>Role:</label>

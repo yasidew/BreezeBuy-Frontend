@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import '../styles/navbar.css'
+import '../styles/navbar.css';
 import logobanner from '../images/logo-banner.png';
 
 
@@ -13,7 +13,7 @@ function Navbar() {
     const fetchUser = async () => {
       try {
         const token = localStorage.getItem('token');
-        const userResponse = await fetch('http://localhost:5030/Auth/me', {
+        const userResponse = await fetch('/Auth/me', {
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -23,7 +23,6 @@ function Navbar() {
         }
 
         const userData = await userResponse.json();
-        console.log("fffff"+userData.username)
         setUser(userData);
       } catch (err) {
         setError('Error fetching user data.');
@@ -39,9 +38,7 @@ function Navbar() {
     navigate('/user-profile');
   };
 
-  // Check if the user
   const isLoggedIn = localStorage.getItem('token') !== null;
-
 
   return (
     <nav className="navbar navbar-expand-lg navbar-blue bg-yellow">
@@ -63,6 +60,7 @@ function Navbar() {
                 </li>
               </>
             )}
+
             {isLoggedIn && user && (
               <li className="nav-item d-flex align-items-center">
                 <span
@@ -84,7 +82,25 @@ function Navbar() {
         </div>
       </div>
     </nav>
-  )
+  );
 }
 
-export default Navbar
+export default Navbar;
+
+// {isLoggedIn && (
+//   <>
+//     <li className="nav-item">
+//       <Link className="nav-link" to="/create-vendor">Create Vendor</Link>
+//     </li>
+//     <li className="nav-item">
+//       <Link className="nav-link" to="/admin-assign">Assign Roles</Link>
+//     </li>
+//     <li className="nav-item">
+//       <Link className="nav-link" to="/product">Products</Link>
+//     </li>
+//     <li className="nav-item">
+//       <Link className="nav-link" to="/order">Orders</Link> {/* New Orders Link */}
+//     </li>
+   
+//   </>
+// )}

@@ -18,7 +18,7 @@ const AddFeedback = () => {
         const fetchUserDetails = async () => {
             try {
                 const token = localStorage.getItem('token');
-                const userResponse = await fetch('https://localhost:7260/Auth/me', {
+                const userResponse = await fetch('/Auth/me', {
                     headers: {
                         'Authorization': `Bearer ${token}`
                     }
@@ -50,7 +50,7 @@ const AddFeedback = () => {
             // Assuming the token is stored in localStorage
             const token = localStorage.getItem('token');
             const response = await axios.post(
-                `https://localhost:7260/api/Vendor/${vendorId}/feedback`,
+                `/api/Vendor/${vendorId}/feedback`,
                 {
                     customerId,
                     commentText,

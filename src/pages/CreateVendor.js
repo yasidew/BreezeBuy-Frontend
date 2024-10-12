@@ -1,3 +1,9 @@
+/*
+ * CreateVendor.js
+ * Author: [Dayananda I.H.M.B.L. | IT21307058]
+ * This is Create Vendor to system
+ */
+
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -15,7 +21,7 @@ const CreateVendor = () => {
 
     const handleRegister = async (e) => {
         e.preventDefault();
-        setError(''); 
+        setError('');
 
         // Check if the password and confirm password match
         if (password !== confirmPassword) {
@@ -24,7 +30,7 @@ const CreateVendor = () => {
         }
 
         try {
-            const response = await axios.post('http://localhost:5030/Auth/register', {
+            const response = await axios.post('/Auth/register', {
                 username,
                 email,
                 password

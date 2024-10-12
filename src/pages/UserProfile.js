@@ -1,3 +1,9 @@
+/*
+ * UserProfile.js
+ * Author: [Dayananda I.H.M.B.L. | IT21307058]
+ * This is UserProfile
+ */
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -16,7 +22,7 @@ const UserProfile = () => {
         const fetchUser = async () => {
             try {
                 const token = localStorage.getItem('token');
-                const userResponse = await fetch('http://localhost:5030/Auth/me', {
+                const userResponse = await fetch('/Auth/me', {
                     headers: {
                         'Authorization': `Bearer ${token}`
                     }
@@ -41,7 +47,7 @@ const UserProfile = () => {
     const deactivateAccount = async () => {
         try {
             const token = localStorage.getItem('token');
-            const response = await axios.put('https://localhost:7260/Auth/deactivateAccount', {}, {
+            const response = await axios.put('/Auth/deactivateAccount', {}, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -74,7 +80,7 @@ const UserProfile = () => {
         <>
         <SideNav />
             <Container className="d-flex flex-column align-items-center">
-                <h2 className="text-center">User Profile</h2>  {/* Centered heading */}
+                <h2 className="page-title">User Profile</h2>  {/* Centered heading */}
                 <Card className="w-75" style={{ maxWidth: '600px' }}>  {/* Control width of the card */}
                     <Card.Body className="text-center">
                         <div className="mb-3">

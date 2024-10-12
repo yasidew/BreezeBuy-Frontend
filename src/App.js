@@ -14,20 +14,29 @@ import VendorDashboard from './pages/VendorDashboard';
 import AddVendor from './pages/AddVendor';
 import UpdateVendor from './pages/UpdateVendor';
 import CustomerDashboard from './pages/CustomerDashboard';
-
-import { ToastContainer, toast } from 'react-toastify';
+import InventoryDashboard from './pages/InventoryDashboard';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AddFeedback from './pages/AddFeedback';
 import UpdateFeedback from './pages/UpdateFeedback'; 
 import UserProfile from './pages/UserProfile';
 import CSRUserPage from './pages/CSRUserPage';
-import InventoryDashboard from './pages/InventoryDashboard';
+import AdminVendorRankingPage from './pages/AdminVendorRankingPage';
+import ProductManagement from './pages/product';
+import UpdateProduct from './pages/updateProduct';
+import CategoryList from './pages/category';
+import AddCategory from './pages/AddCategory';
+import AddProduct from './pages/AddProduct';
+
+// Import OrderManagement and OrderForm pages
+import OrderManagement from './pages/OrderManagement';  // <-- Added this import
+import OrderForm from './pages/OrderForm';              // <-- Added this import
 
 function App() {
   return (
     <Router>
       <Layout>
-        <ToastContainer />
+        <ToastContainer /> {/* ToastContainer for displaying notifications */}
 
         <Routes>
           <Route path="/" element={<Home />} />
@@ -37,12 +46,23 @@ function App() {
           <Route path="/inventory/add" element={<ManageInventory />} />
           <Route path="/inventory/edit/:id" element={<ManageInventory />} />
           <Route path="/inventory-dashboard" element={<InventoryDashboard />} />
+          <Route path="/product" element={<ProductManagement />} />
+          <Route path="/product/edit/:id" element={<UpdateProduct />} />
+          <Route path="/category" element={<CategoryList />} />
+          <Route path="/category/add" element={<AddCategory />} />
+          <Route path="/product/add" element={<AddProduct />} />
           <Route path="/user-profile" element={<UserProfile />} />
+
+          {/* Add the route for OrderManagement and OrderForm */}
+          <Route path="/order" element={<OrderManagement />} />  {/* <-- OrderManagement page */}
+          <Route path="/order/edit/:id" element={<OrderForm />} /> {/* <-- Edit OrderForm */}
+          <Route path="/order/new" element={<OrderForm />} /> {/* <-- Create new OrderForm */}
 
           <Route element={<PrivateRoute role="Admin" />}>
             <Route path="/admin" element={<AdminDashboard />} />
             <Route path="/admin-assign" element={<AssignRole />} />
             <Route path="/create-vendor" element={<CreateVendor />} />
+            <Route path="/admin-vendor" element={<AdminVendorRankingPage />} />
           </Route>
 
           <Route element={<PrivateRoute role="Vendor" />}>
@@ -63,7 +83,6 @@ function App() {
         </Routes>
 
       </Layout>
-
     </Router>
   );
 }
