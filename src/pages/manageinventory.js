@@ -159,7 +159,7 @@ function ManageInventory() {
           <button
             type="button" // Change to type="button" to prevent form submission
             className="btn btn-secondary back-btn"
-            onClick={() => navigate(-1)}
+            onClick={() => navigate(-1)} // Navigate back to previous page
           >
             Back
           </button>
