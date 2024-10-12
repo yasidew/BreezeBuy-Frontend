@@ -65,4 +65,41 @@
     background-color: #007bff;
     border-color: #007bff;
   }
+
+  html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    flex-grow: 1; /* Ensures the content grows to fill the space */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.table-responsive {
+    flex-grow: 1;
+}
+
+/* Sticky footer style */
+footer {
+    background-color: #343a40;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+.page-wrapper {
+    min-height: 100vh; /* Ensures the page takes up the full viewport height */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
   

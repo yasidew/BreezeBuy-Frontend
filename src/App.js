@@ -28,11 +28,14 @@ import CategoryList from './pages/category';
 import AddCategory from './pages/AddCategory';
 import AddProduct from './pages/AddProduct';
 
+// Import your OrderManagement page
+import OrderManagement from './pages/OrderManagement';  // <-- Add this import
+
 function App() {
   return (
     <Router>
-    <Layout>
-      <ToastContainer />
+      <Layout>
+        <ToastContainer />
 
         <Routes>
           <Route path="/" element={<Home />} />
@@ -49,7 +52,9 @@ function App() {
           <Route path="/product/add" element={<AddProduct />} />
           <Route path="/product/add" element={<AddProduct />} />
           <Route path="/user-profile" element={<UserProfile />} />
-          
+
+          {/* Add the route for OrderManagement */}
+          <Route path="/order" element={<OrderManagement />} /> {/* <-- Added this */}
 
           <Route element={<PrivateRoute role="Admin" />}>
             <Route path="/admin" element={<AdminDashboard />} />

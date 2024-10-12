@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/sidenav.css';
@@ -39,6 +38,7 @@ function SideNav() {
       </button>
       <div className={`sidenav ${isOpen ? 'open' : 'closed'}`}>
         <br /><br />
+
         {/* Admin-specific links */}
         {userRole === "Admin" && (
           <>
@@ -60,16 +60,6 @@ function SideNav() {
             <Link to="/category">
               <i className="fas fa-folder-open"></i> {isOpen && <span>Category</span>}
             </Link>
-
-
-            <Link to="/order">
-              <i className="fas fa-file-alt"></i> {isOpen && <span>Orders</span>}
-            </Link>
-
-            {/* <Link to="/inventory">
-              <i className="fas fa-box-open"></i>{" "}
-              {isOpen && <span>Inventory</span>}
-            </Link> */}
           </>
         )}
 
@@ -96,8 +86,6 @@ function SideNav() {
         )}
 
         {/* Customer-specific links */}
-
-
         {userRole === "Customer" && (
           <>
             <Link to="/customer-dashboard">
@@ -111,16 +99,19 @@ function SideNav() {
           </>
         )}
 
+        {/* CSR-specific links */}
         {userRole === 'CSR' && (
           <>
             <Link to="/csr-users-page">
               <i className="fas fa-user"></i> {isOpen && <span>CSR Dashboard</span>}
             </Link>
-            <Link to="/order">
-              <i className="fas fa-file-alt"></i> {isOpen && <span>Orders</span>}
-            </Link>
           </>
         )}
+
+        {/* Orders link available for all users - moved to the bottom */}
+        <Link to="/order">
+          <i className="fas fa-file-alt"></i> {isOpen && <span>Orders</span>}
+        </Link>
       </div>
     </div>
   );
