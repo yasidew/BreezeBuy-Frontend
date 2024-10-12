@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function OrderForm() {
     const { id } = useParams();
@@ -24,6 +26,7 @@ function OrderForm() {
             const response = await axios.get(`/api/order/${orderId}`);
             setOrder(response.data);
         } catch (error) {
+            toast.error("Error fetching order");
             console.error('Error fetching order:', error);
         }
     };
@@ -38,11 +41,14 @@ function OrderForm() {
         try {
             if (id) {
                 await axios.put(`/api/order/${id}`, order);
+                toast.success("Order updated successfully!");
             } else {
                 await axios.post('/api/order', order);
+                toast.success("Order created successfully!");
             }
             navigate('/order');
         } catch (error) {
+            toast.error("Error saving order");
             console.error('Error saving order:', error);
         }
     };
@@ -76,6 +82,9 @@ function OrderForm() {
                     {id ? 'Update Order' : 'Create Order'}
                 </button>
             </form>
+
+            {/* Toast Container */}
+            <ToastContainer />
         </div>
     );
 }

@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import "../styles/order.css";
 import SideNav from "../components/sidenav";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function OrderManagement() {
   const [orders, setOrders] = useState([]);
@@ -15,6 +17,7 @@ function OrderManagement() {
         setOrders(res.data);
       })
       .catch((err) => {
+        toast.error("Error retrieving orders");
         console.log("Error retrieving orders:", err);
       });
   }, []);
@@ -24,8 +27,10 @@ function OrderManagement() {
       .delete(`/api/order/${orderId}`)
       .then(() => {
         setOrders(orders.filter((order) => order.id !== orderId));
+        toast.success("Order deleted successfully!"); // Show success toast
       })
       .catch((error) => {
+        toast.error("Error deleting order"); // Show error toast
         console.log("Error deleting order:", error);
       });
   };
@@ -88,10 +93,8 @@ function OrderManagement() {
         </div>
       </div>
 
-      {/* Footer */}
-      {/* <footer>
-        <div>BreezeBuy © 2024. All Rights Reserved.</div>
-      </footer> */}
+      {/* Toast Container */}
+      <ToastContainer />
     </div>
   );
 }
