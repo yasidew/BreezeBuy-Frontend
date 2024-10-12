@@ -18,7 +18,7 @@ import InventoryDashboard from './pages/InventoryDashboard';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AddFeedback from './pages/AddFeedback';
-import UpdateFeedback from './pages/UpdateFeedback';
+import UpdateFeedback from './pages/UpdateFeedback'; 
 import UserProfile from './pages/UserProfile';
 import CSRUserPage from './pages/CSRUserPage';
 import AdminVendorRankingPage from './pages/AdminVendorRankingPage';

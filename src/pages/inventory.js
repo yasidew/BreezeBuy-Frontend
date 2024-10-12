@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { confirmAlert } from "react-confirm-alert"; // Import
+import { confirmAlert } from "react-confirm-alert"; 
 import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
 import "../styles/inventory.css";
 import SideNav from "../components/sidenav";
@@ -29,7 +29,7 @@ function Inventory() {
   const fetchInventoryItems = async () => {
     setLoading(true);
     try {
-      const res = await axios.get("http://localhost:5030/api/inventory/");
+      const res = await axios.get("/api/inventory");
       setInventoryItems(res.data);
     } catch (err) {
       console.error("Error retrieving data", err);
@@ -42,13 +42,13 @@ function Inventory() {
   const handleSearch = async () => {
     if (!searchTerm.trim()) {
       // If search term is empty, fetch all items
-      fetchInventoryItems();
+      fetchInventoryItems(); 
       return;
     }
 
     try {
       const res = await axios.get(
-        `http://localhost:5030/api/inventory/search`,
+        `https://pasindu99-001-site1.etempurl.com/api/inventory/search`,
         {
           params: { searchTerm },
         }
@@ -63,7 +63,7 @@ function Inventory() {
   // Fetch low stock items
   useEffect(() => {
     axios
-      .get("http://localhost:5030/api/inventory/low-stock")
+      .get("https://pasindu99-001-site1.etempurl.com/api/inventory/low-stock")
       .then((res) => {
         setLowStockItems(res.data);
       })
@@ -87,7 +87,7 @@ function Inventory() {
                 className="btn-confirm"
                 onClick={() => {
                   axios
-                    .delete(`http://localhost:5030/api/inventory/${productId}`)
+                    .delete(`https://pasindu99-001-site1.etempurl.com/api/inventory/${productId}`)
                     .then((res) => {
                       setInventoryItems(
                         inventoryItems.filter((item) => item.id !== productId)

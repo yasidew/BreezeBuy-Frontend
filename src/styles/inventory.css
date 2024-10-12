@@ -241,10 +241,13 @@ margin-left: 10px;
 }
 
 .inventory-header-2{
-position: absolute;
-  top: 230px;
-  /* display: flex; */
-  justify-content: space-between;
-  align-items: center;
-  width: calc(100% - 510px);
+
+  position: absolute;
+    top: 230px;
+    /* display: flex; */
+    justify-content: space-between;
+    align-items: center;
+    width: calc(100% - 510px);
 }
+
+

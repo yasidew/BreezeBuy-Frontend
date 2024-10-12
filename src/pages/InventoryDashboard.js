@@ -8,7 +8,7 @@ import React from 'react';
 import SideNav from "../components/sidenav";
 import '../styles/InventoryDashboard.css';
 
-function InventoryDashboard() {
+function InventoryDashboard() { //inventory dashboard component
   return (
     <div className="container mt-5 dashboard-page">
       <SideNav />
