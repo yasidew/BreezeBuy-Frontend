@@ -10,8 +10,8 @@ function OrderForm() {
     const [order, setOrder] = useState({
         orderNumber: '',
         customerId: '',
-        items: [],
-        status: 'pending',
+        items: [], // Add items here if needed
+        status: 'pending',  // Default status is 'pending'
         totalPayment: 0
     });
 
@@ -77,6 +77,20 @@ function OrderForm() {
                         value={order.customerId}
                         onChange={handleInputChange}
                     />
+                </div>
+                <div className="form-group">
+                    <label>Status</label>
+                    <select
+                        className="form-control"
+                        name="status"
+                        value={order.status}
+                        onChange={handleInputChange}
+                    >
+                        <option value="pending">Pending</option>
+                        <option value="purchased">Purchased</option>
+                        <option value="shipped">Shipped</option>
+                        <option value="delivered">Delivered</option>
+                    </select>
                 </div>
                 <button type="submit" className="btn btn-primary">
                     {id ? 'Update Order' : 'Create Order'}

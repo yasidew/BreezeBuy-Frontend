@@ -15,7 +15,7 @@ import AddVendor from './pages/AddVendor';
 import UpdateVendor from './pages/UpdateVendor';
 import CustomerDashboard from './pages/CustomerDashboard';
 import InventoryDashboard from './pages/InventoryDashboard';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AddFeedback from './pages/AddFeedback';
 import UpdateFeedback from './pages/UpdateFeedback';
@@ -28,14 +28,15 @@ import CategoryList from './pages/category';
 import AddCategory from './pages/AddCategory';
 import AddProduct from './pages/AddProduct';
 
-// Import your OrderManagement page
-import OrderManagement from './pages/OrderManagement';  // <-- Add this import
+// Import OrderManagement and OrderForm pages
+import OrderManagement from './pages/OrderManagement';  // <-- Added this import
+import OrderForm from './pages/OrderForm';              // <-- Added this import
 
 function App() {
   return (
     <Router>
       <Layout>
-        <ToastContainer />
+        <ToastContainer /> {/* ToastContainer for displaying notifications */}
 
         <Routes>
           <Route path="/" element={<Home />} />
@@ -50,11 +51,12 @@ function App() {
           <Route path="/category" element={<CategoryList />} />
           <Route path="/category/add" element={<AddCategory />} />
           <Route path="/product/add" element={<AddProduct />} />
-          <Route path="/product/add" element={<AddProduct />} />
           <Route path="/user-profile" element={<UserProfile />} />
 
-          {/* Add the route for OrderManagement */}
-          <Route path="/order" element={<OrderManagement />} /> {/* <-- Added this */}
+          {/* Add the route for OrderManagement and OrderForm */}
+          <Route path="/order" element={<OrderManagement />} />  {/* <-- OrderManagement page */}
+          <Route path="/order/edit/:id" element={<OrderForm />} /> {/* <-- Edit OrderForm */}
+          <Route path="/order/new" element={<OrderForm />} /> {/* <-- Create new OrderForm */}
 
           <Route element={<PrivateRoute role="Admin" />}>
             <Route path="/admin" element={<AdminDashboard />} />
@@ -81,7 +83,6 @@ function App() {
         </Routes>
 
       </Layout>
-
     </Router>
   );
 }

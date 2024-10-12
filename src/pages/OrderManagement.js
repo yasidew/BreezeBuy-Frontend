@@ -15,13 +15,15 @@ function OrderManagement() {
       .get("/api/order")
       .then((res) => {
         setOrders(res.data);
+        toast.success("Orders retrieved successfully!"); // Success notification
       })
       .catch((err) => {
-        toast.error("Error retrieving orders");
+        toast.error("Error retrieving orders"); // Error notification
         console.log("Error retrieving orders:", err);
       });
   }, []);
 
+  // Handle deleting an order
   const handleDeleteClick = (orderId) => {
     axios
       .delete(`/api/order/${orderId}`)
@@ -44,9 +46,9 @@ function OrderManagement() {
         <div className="table-responsive mt-4">
           <div className="order-management-header">
             <h1 className="title">Order Management</h1>
-            <Link to="/order/new">
+            {/* <Link to="/order/new">
               <button className="btn btn-primary add-new-btn">+ Add New Order</button>
-            </Link>
+            </Link> */}
           </div>
 
           <h2>Orders</h2>
